@@ -49,7 +49,7 @@ BG = next((f"assets/img/hero.{x}" for x in ("jpg", "webp", "png")
            if (ROOT / f"assets/img/hero.{x}").exists()), "assets/img/art-hero.svg")
 print(f"  fondale: {BG}")
 
-for lang in ("it", "en"):
+for lang in ("en",):
     title = COPY["hero.title"][lang].replace(" | ", " ")
     html = TPL.format(root=ROOT.as_uri(), mark=MARK, title=title, tag=SECTORS[lang], bg=BG)
     src = ROOT / f".og-{lang}.html"
@@ -63,7 +63,7 @@ for lang in ("it", "en"):
     print(f"  ✓ og-image-{lang}.png  {out.stat().st_size // 1024} KB")
 
 # Le anteprime social viaggiano meglio in JPEG: stessa resa, un quinto del peso.
-for lang in ("it", "en"):
+for lang in ("en",):
     png = ROOT / "assets" / "img" / f"og-image-{lang}.png"
     jpg = png.with_suffix(".jpg")
     subprocess.run(["sips", "-s", "format", "jpeg", "-s", "formatOptions", "86",
