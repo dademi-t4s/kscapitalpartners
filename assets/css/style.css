@@ -465,9 +465,11 @@ html.js.has-pointer .spotlight { opacity: 1; }
   isolation: isolate;
 }
 .figure img {
+  /* Assoluta, non nel flusso: alcuni riquadri (il blocco d'invito) prendono
+     l'altezza dal testo, e un'immagine in flusso li spingerebbe in basso. */
+  position: absolute; inset: 0; z-index: 1;
   width: 100%; height: 100%;
   object-fit: cover; object-position: var(--focal, center);
-  position: relative; z-index: 1;
 }
 .figure__scrim {
   position: absolute; inset: 0; z-index: 2; pointer-events: none;
@@ -1170,3 +1172,41 @@ html.js .rail { display: flex; }
 .notfound__title { font-size: var(--t-h1); margin-top: var(--s-4); }
 .notfound .rule { margin-block: var(--s-5); }
 .notfound__actions { margin-top: var(--s-6); }
+
+/* --- Dati societari nel piede -------------------------------------------
+   Per una S.r.l. l'art. 2250 c.c. richiede che sede, registro, REA e capitale
+   siano riportati sul sito. Vanno letti, non nascosti: testo piccolo ma con
+   contrasto pieno.
+   ---------------------------------------------------------------------- */
+.footer__legalinfo {
+  padding-block: var(--s-5);
+  border-top: 1px solid var(--line);
+}
+.footer__legalinfo .footer__head { margin-bottom: var(--s-3); }
+.footer__legalinfo p {
+  display: flex; flex-wrap: wrap;
+  gap: .35rem 1.6rem;
+  margin: 0;
+  font-size: var(--t-small);
+  line-height: 1.6;
+  color: var(--fg-dim);
+}
+.footer__legalinfo b { color: var(--fg-mute); font-weight: 400; }
+.footer__legalinfo a {
+  color: inherit;
+  border-bottom: 1px solid var(--line);
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.footer__legalinfo a:hover { color: var(--gold); border-color: var(--gold); }
+
+/* --- Telefono nella scheda contatti ------------------------------------- */
+.contact__phone {
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 1rem + .9vw, 1.6rem);
+  color: var(--fg);
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-size: 0% 1px; background-repeat: no-repeat; background-position: left 92%;
+  transition: background-size var(--dur) var(--ease-out), color var(--dur-fast) var(--ease);
+  font-variant-numeric: tabular-nums;
+}
+.contact__phone:hover { color: var(--gold); background-size: 100% 1px; }

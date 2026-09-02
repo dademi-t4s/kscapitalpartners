@@ -18,16 +18,14 @@ SITE = "https://www.kscapitalpartners.it"
 # deve scaricare o seguire usa invece percorsi relativi, così le pagine
 # funzionano alla radice di un dominio, dentro una sottocartella e anche
 # aperte direttamente dal disco.
+# Il sito è in inglese. I testi italiani restano in copy.json: per riattivare
+# la versione italiana basta rimettere la voce "it" qui sotto e in write().
 LANGS = {
-    "it": {"dir": "",   "other": "en", "abs": "/",    "up": ""},
-    "en": {"dir": "en", "other": "it", "abs": "/en/", "up": "../"},
+    "en": {"dir": "", "abs": "/", "up": ""},
 }
 
 LINKS = {
-    "it": {"home_it": "index.html",     "home_en": "en/index.html",
-           "legal_it": "note-legali.html", "legal_en": "en/legal.html"},
-    "en": {"home_it": "../index.html",  "home_en": "index.html",
-           "legal_it": "../note-legali.html", "legal_en": "legal.html"},
+    "en": {"home_en": "index.html", "legal_en": "legal.html"},
 }
 
 
@@ -42,6 +40,24 @@ def home(lang, of=None):
 
 def legal(lang, of=None):
     return LINKS[lang]["legal_" + (of or lang)]
+
+
+EMAIL = "d.kapo@kscapitalpartners.it"
+PHONE = "+39 328 702 3109"
+PHONE_HREF = "+393287023109"
+
+# Dati d'iscrizione, obbligatori sul sito di una S.r.l. per l'art. 2250 c.c.
+COMPANY = {
+    "legal_name": "KS Capital Partners S.r.l.",
+    "street":     "Via Tommaso Grossi 2",
+    "postcode":   "20121",
+    "city":       "Milano",
+    "province":   "MI",
+    "country":    "IT",
+    "vat":        "14697790963",
+    "rea":        "MI - 2801568",
+    "pec":        "kscapitalpartners@pec.it",
+}
 
 NAV = [
     ("home",     {"it": "Home",             "en": "Home"}),
@@ -70,7 +86,6 @@ UI = {
     "rail":        {"it": "Indice delle sezioni",      "en": "Section index"},
 }
 
-EMAIL = "info@kscapitalpartners.it"
 
 
 def t(key, lang, default=""):
@@ -200,15 +215,12 @@ def head(lang, title, desc, path):
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{SITE}{path}">
-<link rel="alternate" hreflang="it" href="{SITE}/">
-<link rel="alternate" hreflang="en" href="{SITE}/en/">
-<link rel="alternate" hreflang="x-default" href="{SITE}/">
 <meta name="theme-color" content="#0b0b0d">
 <meta name="robots" content="index, follow, max-image-preview:large">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KS Capital Partners">
-<meta property="og:locale" content="{'it_IT' if lang == 'it' else 'en_GB'}">
+<meta property="og:locale" content="en_GB">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{SITE}{path}">
@@ -261,13 +273,7 @@ def header(lang, active="home"):
         f'data-rail="{k}"><span class="rail__label">{e(lbl[lang])}</span>'
         f'<span class="rail__tick"></span></a>'
         for k, lbl in NAV)
-    lang_switch = f'''<div class="lang" role="group" aria-label="{e(UI["lang_label"][lang])}">
-          <a class="lang__btn" href="{home(lang, "it")}" {'aria-current="page"' if lang == "it" else ''} hreflang="it"
-             lang="it" title="{e(UI["to_it"][lang])}">IT</a>
-          <span class="lang__sep" aria-hidden="true">/</span>
-          <a class="lang__btn" href="{home(lang, "en")}" {'aria-current="page"' if lang == "en" else ''} hreflang="en"
-             lang="en" title="{e(UI["to_en"][lang])}">EN</a>
-        </div>'''
+    lang_switch = ""
     return f'''<header class="header" id="header">
   <div class="header__inner">
     {logo(lang, "a", home(lang))}
@@ -490,7 +496,8 @@ def contact(lang):
          f'<button class="copy" type="button" data-copy="{EMAIL}" '
          f'data-label="{e(UI["copy"][lang])}" data-done="{e(UI["copied"][lang])}">'
          f'<span class="copy__text">{e(UI["copy"][lang])}</span></button>'),
-        (t("contact.hours_label", lang), e(t("contact.hours_value", lang))),
+        (t("contact.phone_label", lang),
+         f'<a class="contact__phone" href="tel:{PHONE_HREF}">{e(PHONE)}</a>'),
         (t("contact.location_label", lang), e(t("contact.location_value", lang))),
     ]
     items = "".join(f'''
@@ -548,6 +555,17 @@ def footer(lang):
           <li class="dim">{e(t("contact.location_value", lang))}</li></ul>
     </div>
   </div>
+  <div class="wrap footer__legalinfo">
+    <h2 class="footer__head">{e(t("footer.company_heading", lang))}</h2>
+    <p>
+      <b>{COMPANY["legal_name"]}</b>
+      <span>{e(t("company.registered_office", lang))}: {COMPANY["street"]},
+        {COMPANY["postcode"]} {COMPANY["city"]} ({COMPANY["province"]}), Italy</span>
+      <span>{e(t("company.vat", lang))} {COMPANY["vat"]}</span>
+      <span>{e(t("company.rea", lang))} {COMPANY["rea"]} — {e(t("company.registry", lang))}</span>
+      <span>{e(t("company.pec", lang))} <a href="mailto:{COMPANY["pec"]}">{COMPANY["pec"]}</a></span>
+    </p>
+  </div>
   <div class="wrap footer__bar">
     <p class="dim">{e(t("footer.rights", lang))}</p>
     <a class="footer__top" href="#top">{e(UI["back_home"][lang])}
@@ -580,16 +598,30 @@ def jsonld(lang, desc):
                 "@type": "Organization",
                 "@id": f"{SITE}/#organization",
                 "name": "KS Capital Partners",
+                "legalName": COMPANY["legal_name"],
                 "url": SITE + "/",
                 "description": desc,
                 "logo": {"@type": "ImageObject", "url": f"{SITE}/assets/img/icon-512.png",
                          "width": 512, "height": 512},
                 "email": EMAIL,
-                "address": {"@type": "PostalAddress", "addressCountry": "IT"},
+                "telephone": PHONE,
+                "vatID": COMPANY["vat"],
+                "taxID": COMPANY["vat"],
+                "identifier": {"@type": "PropertyValue", "name": "REA",
+                               "value": COMPANY["rea"]},
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": COMPANY["street"],
+                    "postalCode": COMPANY["postcode"],
+                    "addressLocality": COMPANY["city"],
+                    "addressRegion": COMPANY["province"],
+                    "addressCountry": COMPANY["country"],
+                },
                 "contactPoint": [{
                     "@type": "ContactPoint",
                     "contactType": "business enquiries",
                     "email": EMAIL,
+                    "telephone": PHONE,
                     "availableLanguage": ["it", "en"],
                 }],
                 "knowsLanguage": ["it", "en"],
@@ -659,7 +691,7 @@ def build_legal(lang):
         body += (f'<section class="legal__section" id="{anchor}">'
                  f'<h2>{e(t(ti, lang))}</h2><div class="legal__body">{paras}</div></section>')
     notice = t("legal.disclaimer_notice", lang)
-    href = LANGS[lang]["abs"] + ("legal.html" if lang == "en" else "note-legali.html")
+    href = LANGS[lang]["abs"] + "legal.html"
     return (head(lang, title, desc, href)
             + header(lang, active=None)
             + f'''<main id="main" class="legal">
@@ -723,27 +755,17 @@ def write(rel, content):
 
 
 out = [
-    write("index.html", build_home("it")),
-    write("en/index.html", build_home("en")),
-    write("note-legali.html", build_legal("it")),
-    write("404.html", build_404("it")),
-    write("en/404.html", build_404("en")),
-    write("en/legal.html", build_legal("en")),
+    write("index.html", build_home("en")),
+    write("legal.html", build_legal("en")),
+    write("404.html", build_404("en")),
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n"),
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n'
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
           'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
           + "".join(
-              f'  <url><loc>{SITE}{u}</loc>\n'
-              f'    <xhtml:link rel="alternate" hreflang="it" href="{SITE}{alt_it}"/>\n'
-              f'    <xhtml:link rel="alternate" hreflang="en" href="{SITE}{alt_en}"/>\n'
-              f'    <changefreq>monthly</changefreq><priority>{pr}</priority></url>\n'
-              for u, alt_it, alt_en, pr in [
-                  ("/", "/", "/en/", "1.0"),
-                  ("/en/", "/", "/en/", "1.0"),
-                  ("/note-legali.html", "/note-legali.html", "/en/legal.html", "0.3"),
-                  ("/en/legal.html", "/note-legali.html", "/en/legal.html", "0.3"),
-              ])
+              f'  <url><loc>{SITE}{u}</loc>'
+              f'<changefreq>monthly</changefreq><priority>{pr}</priority></url>\n'
+              for u, pr in [("/", "1.0"), ("/legal.html", "0.3")])
           + "</urlset>\n"),
     write("site.webmanifest", json.dumps({
         "name": "KS Capital Partners", "short_name": "KS Capital",
