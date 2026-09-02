@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+ <defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#c9a06a"/><stop offset=".38" stop-color="#f2d3a4"/>
+   <stop offset=".55" stop-color="#fff0d6"/><stop offset=".57" stop-color="#8d99a4"/>
+   <stop offset=".78" stop-color="#4a545e"/><stop offset="1" stop-color="#2b3138"/>
+  </linearGradient>
+  <linearGradient id="wallL" x1="0" y1="0" x2="1" y2="0">
+   <stop offset="0" stop-color="#050506"/><stop offset=".72" stop-color="#0d0c0f"/>
+   <stop offset="1" stop-color="#28221d"/>
+  </linearGradient>
+  <linearGradient id="wallR" x1="1" y1="0" x2="0" y2="0">
+   <stop offset="0" stop-color="#060607"/><stop offset=".70" stop-color="#100e11"/>
+   <stop offset="1" stop-color="#3a3025"/>
+  </linearGradient>
+  <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#1a1712"/><stop offset="1" stop-color="#08080a"/>
+  </linearGradient>
+  <linearGradient id="spill" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#ffe8c0" stop-opacity=".70"/>
+   <stop offset=".45" stop-color="#e8c393" stop-opacity=".26"/>
+   <stop offset="1" stop-color="#c99f63" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="ceil" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#030304"/><stop offset="1" stop-color="#0b0a0c"/>
+  </linearGradient>
+  <radialGradient id="bloom" cx=".5" cy=".5" r=".5">
+   <stop offset="0" stop-color="#ffe9c8" stop-opacity=".55"/>
+   <stop offset="1" stop-color="#ffe9c8" stop-opacity="0"/>
+  </radialGradient>
+ </defs>
+
+ <rect width="1600" height="1000" fill="#08080a"/>
+ <rect x="880" y="150" width="210" height="500" fill="url(#sky)"/>
+ <ellipse cx="985" cy="430" rx="330" ry="290" fill="url(#bloom)"/>
+
+ <polygon points="0,1000 880,650 1090,650 1600,1000" fill="url(#floor)"/>
+ <polygon points="880,650 1090,650 1420,1000 545,1000" fill="url(#spill)"/>
+
+ <polygon points="0,0 880,150 880,650 0,1000" fill="url(#wallL)"/>
+ <polygon points="1600,0 1090,150 1090,650 1600,1000" fill="url(#wallR)"/>
+ <polygon points="0,0 880,150 1090,150 1600,0" fill="url(#ceil)"/>
+
+ <rect x="876" y="150" width="5" height="500" fill="#6b5535" opacity=".75"/>
+ <rect x="1089" y="150" width="5" height="500" fill="#8a6d43" opacity=".85"/>
+ <polygon points="0,1000 880,650 884,650 0,1000" fill="#3a2e1e" opacity=".5"/>
+</svg>

@@ -1,0 +1,382 @@
+{
+ "values.reach.name": {
+  "en": "Global Reach",
+  "it": "Portata globale"
+ },
+ "values.reach.body": {
+  "en": "Reach measured in people, not offices. Europe, the Mediterranean, the Gulf, North America. Held directly, kept in person.",
+  "it": "La portata si misura in persone, non in sedi. Europa, Mediterraneo, Golfo, Nord America. Rapporti diretti, mantenuti di persona."
+ },
+ "values.discretion.name": {
+  "en": "Discretion",
+  "it": "Riservatezza"
+ },
+ "values.discretion.body": {
+  "en": "Nothing is published. No names, no logos, no case studies. Each side learns of the other only when both agree to be known.",
+  "it": "Nulla viene pubblicato. Nessun nome, nessun logo, nessun caso di studio. Ciascuna parte conosce l'altra solo col consenso di entrambe."
+ },
+ "values.trust.name": {
+  "en": "Trusted Introducer",
+  "it": "Introduttore di fiducia"
+ },
+ "values.trust.body": {
+  "en": "We are paid for the introduction, not for advice. No positions, no client funds, no side of the table to favour.",
+  "it": "Siamo remunerati per la presentazione, non per un parere. Nessuna posizione, nessun fondo di terzi, nessun lato da favorire."
+ },
+ "values.results.name": {
+  "en": "Results Driven",
+  "it": "Orientati al risultato"
+ },
+ "values.results.body": {
+  "en": "Both sides are qualified before either is named. The measure is a meeting that leads somewhere, not a list of contacts.",
+  "it": "Qualifichiamo entrambe le parti prima di nominarle. Il metro è un incontro che porta a qualcosa, non un elenco di contatti."
+ },
+ "approach.eyebrow": {
+  "en": "How we work",
+  "it": "Il nostro metodo"
+ },
+ "approach.title": {
+  "en": "Four steps, taken in order",
+  "it": "Quattro fasi, seguite nell'ordine"
+ },
+ "approach.intro": {
+  "en": "An introduction is prepared long before it is made. Each stage is deliberate, and any of them may end the matter. We would rather decline early than spend a principal's afternoon.",
+  "it": "Una presentazione si prepara molto prima di avvenire. Ogni fase è deliberata e ciascuna può chiudere la questione. Preferiamo declinare per tempo piuttosto che far perdere un pomeriggio."
+ },
+ "approach.step1.num": {
+  "en": "01",
+  "it": "01"
+ },
+ "approach.step1.name": {
+  "en": "Reading the mandate",
+  "it": "Lettura del mandato"
+ },
+ "approach.step1.body": {
+  "en": "We listen first, then test what we heard. Scope, capacity, timing, title. If the requirement is not real, or not yet real, we say so and the matter closes there.",
+  "it": "Prima ascoltiamo, poi verifichiamo quanto ascoltato. Oggetto, capacità, tempi, titolarità. Se l'esigenza non è reale, o non lo è ancora, lo diciamo e la questione si chiude lì."
+ },
+ "approach.step2.num": {
+  "en": "02",
+  "it": "02"
+ },
+ "approach.step2.name": {
+  "en": "Mapping the room",
+  "it": "Mappa delle relazioni"
+ },
+ "approach.step2.body": {
+  "en": "We know who sits where, and who will actually take the call. The right name is chosen, approached quietly, and confirmed as available before either party is told anything.",
+  "it": "Sappiamo chi siede dove e chi risponderà davvero. Il nome giusto viene scelto, avvicinato con discrezione e confermato disponibile prima che alle parti venga detto alcunché."
+ },
+ "approach.step3.num": {
+  "en": "03",
+  "it": "03"
+ },
+ "approach.step3.name": {
+  "en": "The introduction",
+  "it": "La presentazione"
+ },
+ "approach.step3.body": {
+  "en": "Names are exchanged only once both sides have agreed to be known. Terms of confidentiality are set before the first call. What is said in the room stays with the principals.",
+  "it": "I nomi si scambiano solo quando entrambe le parti hanno acconsentito. I termini di riservatezza si fissano prima della prima chiamata. Quanto si dice al tavolo resta alle parti."
+ },
+ "approach.step4.num": {
+  "en": "04",
+  "it": "04"
+ },
+ "approach.step4.name": {
+  "en": "Alongside",
+  "it": "Accanto alle parti"
+ },
+ "approach.step4.body": {
+  "en": "We stay reachable while the relationship finds its own shape. Where a question of language, culture or timing arises, we answer it. The transaction belongs to the principals.",
+  "it": "Restiamo raggiungibili mentre la relazione trova la propria forma. Se sorge una questione di lingua, cultura o tempi, rispondiamo. L'operazione appartiene alle parti."
+ },
+ "approach.note": {
+  "en": "We give no investment, legal or tax advice, and we hold no position in what follows.",
+  "it": "Non prestiamo consulenza in materia di investimenti, legale o fiscale e non deteniamo alcuna posizione in ciò che segue."
+ },
+ "network.eyebrow": {
+  "en": "The network",
+  "it": "La rete"
+ },
+ "network.title": {
+  "en": "People, not a database",
+  "it": "Persone, non un archivio"
+ },
+ "network.body": {
+  "en": "The network is a small number of relationships held over years, across Europe, the Mediterranean basin, the Gulf and North America. Each one is maintained in person, in the counterparty's own language and business culture. We make an introduction only where we are known well enough for the call to be taken.",
+  "it": "La rete è un numero contenuto di relazioni coltivate negli anni, in Europa, nel bacino del Mediterraneo, nel Golfo e in Nord America. Ciascuna è mantenuta di persona, nella lingua e nella cultura d'affari della controparte. Presentiamo solo dove siamo conosciuti abbastanza perché la chiamata venga accolta."
+ },
+ "network.regions": {
+  "en": "Italy | Western Europe | Mediterranean | Turkey | Gulf States | North America",
+  "it": "Italia | Europa occidentale | Mediterraneo | Turchia | Paesi del Golfo | Nord America"
+ },
+ "network.sectors": {
+  "en": "Trading houses | Refiners | Family offices | Private collectors | Galleries and foundations | Quarry owners",
+  "it": "Case di trading | Raffinerie | Family office | Collezionisti privati | Gallerie e fondazioni | Proprietari di cave"
+ },
+ "network.disclaimer": {
+  "en": "Names are not published, here or anywhere. The network is described in general terms and disclosed only to the party it concerns, with consent.",
+  "it": "I nomi non sono pubblicati, né qui né altrove. La rete si descrive in termini generali e si rivela solo alla parte interessata, previo consenso."
+ },
+ "hero.eyebrow": {
+  "en": "Independent introducer",
+  "it": "Introduttore indipendente"
+ },
+ "hero.title": {
+  "en": "Discreet introductions. | Made across borders. | Real counterparties.",
+  "it": "Presentazioni riservate. | Oltre i confini. | Controparti reali."
+ },
+ "hero.body": {
+  "en": "We are an independent business introducer. We bring two qualified parties to the same table in physical commodities, fine art and natural stone; the transaction remains theirs.",
+  "it": "Siamo un introduttore d'affari indipendente. Portiamo allo stesso tavolo due parti qualificate nelle commodities fisiche, nell'arte e nella pietra naturale; l'operazione resta loro."
+ },
+ "hero.cta_primary": {
+  "en": "Request a call",
+  "it": "Primo contatto"
+ },
+ "hero.cta_secondary": {
+  "en": "Focus areas",
+  "it": "Aree di attività"
+ },
+ "hero.scroll_hint": {
+  "en": "Scroll down",
+  "it": "Scorrere in basso"
+ },
+ "about.eyebrow": {
+  "en": "Who we are",
+  "it": "Chi siamo"
+ },
+ "about.title": {
+  "en": "The introduction is the work.",
+  "it": "La presentazione è il lavoro."
+ },
+ "about.lead": {
+  "en": "KS Capital Partners holds relationships built over years and places them where they are needed. We do not invest, do not intermediate financial instruments and do not manage capital.",
+  "it": "KS Capital Partners custodisce relazioni costruite negli anni e le mette a disposizione di chi dovrebbe parlarsi. Non investe, non intermedia strumenti finanziari, non gestisce capitali."
+ },
+ "about.body_1": {
+  "en": "We are independent. No mandate on either side, no ownership, no position in the outcome. That neutrality is why a door opens: there is no side for us to favour, and both parties know what we are and what we are not before the first call. We are paid for the introduction and the relationship behind it.",
+  "it": "Siamo indipendenti. Nessun mandato su alcun lato, nessuna partecipazione, nessun interesse nell'esito. È questa neutralità ad aprire le porte: non abbiamo una parte da favorire, ed entrambe sanno cosa siamo, e cosa non siamo, prima della prima chiamata. Siamo remunerati per la presentazione e per la relazione che la rende possibile."
+ },
+ "about.body_2": {
+  "en": "A well-made introduction is not a contact passed along. Both sides are qualified before either is named: mandate, capacity, funds, provenance, title. Each learns of the other only when both have agreed to be known. Nothing is published: no names, no figures, no case studies. Discretion is not a clause here. It is the product.",
+  "it": "Una presentazione ben fatta non è un contatto passato di mano. Entrambe le parti vengono qualificate prima: mandato, capacità, provenienza, titolarità. Ciascuna conosce l'altra solo quando entrambe acconsentono. Nulla viene pubblicato: nessun nome, nessuna cifra, nessun caso di studio. La riservatezza non è una clausola: è il prodotto."
+ },
+ "about.stat_1_value": {
+  "en": "Independent",
+  "it": "Indipendenti"
+ },
+ "about.stat_1_label": {
+  "en": "No mandate on either side",
+  "it": "Nessun mandato su alcun lato"
+ },
+ "about.stat_2_value": {
+  "en": "Cross-border",
+  "it": "Transfrontalieri"
+ },
+ "about.stat_2_label": {
+  "en": "Europe, Mediterranean, Gulf",
+  "it": "Europa, Mediterraneo, Golfo"
+ },
+ "about.stat_3_value": {
+  "en": "By referral",
+  "it": "Su presentazione"
+ },
+ "about.stat_3_label": {
+  "en": "Relationships, not lists",
+  "it": "Relazioni, non elenchi"
+ },
+ "about.quote": {
+  "en": "We move at the speed of trust. Slower than the market, and more durable.",
+  "it": "Ci muoviamo alla velocità della fiducia: più lenta del mercato, e più duratura."
+ },
+ "focus.eyebrow": {
+  "en": "Focus Areas",
+  "it": "Aree di attività"
+ },
+ "focus.title": {
+  "en": "Three sectors. One method.",
+  "it": "Tre settori. Un solo metodo."
+ },
+ "focus.intro": {
+  "en": "Physical commodities, fine art and natural stone. Three markets that do not advertise, where the decisive counterparty is known, not listed.",
+  "it": "Commodities fisiche, arte e pietra naturale. Tre mercati che non si annunciano, dove la controparte decisiva si conosce, non si cerca in elenco."
+ },
+ "focus.oil.name": {
+  "en": "Commodities",
+  "it": "Materie prime"
+ },
+ "focus.oil.sublabel": {
+  "en": "Oil",
+  "it": "Petrolio"
+ },
+ "focus.oil.body": {
+  "en": "We introduce verified buyers to verified sellers in crude and refined product. Volume, terms and logistics are discussed directly between principals.",
+  "it": "Presentiamo acquirenti verificati a venditori verificati di greggio e prodotti raffinati. Volumi, condizioni e logistica restano fra le parti."
+ },
+ "focus.oil.detail": {
+  "en": "Most cargo offers in circulation are copies. We work only where a principal sits at each end: a seller with title and capacity, a buyer with funds and a discharge port. Both sides are qualified before either is named, and the terms of the first call are agreed in advance. Vessel nomination, inspection, documents and payment structure remain with the parties and their own advisors.",
+  "it": "Gran parte delle offerte in circolazione sono copie. Lavoriamo solo dove a ciascun estremo vi è un titolare: un venditore con titolo e capacità, un acquirente con disponibilità e porto di sbarco. Entrambe le parti vengono qualificate prima di essere nominate. Nomina della nave, ispezione, documenti e struttura di pagamento restano alle parti e ai loro consulenti."
+ },
+ "focus.oil.points": {
+  "en": "Buyer and seller matching | Counterparty verification | Cross-border trade routes",
+  "it": "Incontro tra domanda e offerta | Verifica della controparte | Rotte commerciali internazionali"
+ },
+ "focus.oil.cta": {
+  "en": "Read more",
+  "it": "Approfondisci"
+ },
+ "focus.art.name": {
+  "en": "Art",
+  "it": "Arte"
+ },
+ "focus.art.sublabel": {
+  "en": "Fine Art",
+  "it": "Opere d'autore"
+ },
+ "focus.art.body": {
+  "en": "We connect private collectors, estates and galleries away from the saleroom. Works change hands quietly, with provenance and attribution settled first.",
+  "it": "Mettiamo in contatto collezionisti privati, eredi e gallerie lontano dalla sala d'asta. Le opere passano di mano in silenzio, con provenienza accertata."
+ },
+ "focus.art.detail": {
+  "en": "A work of consequence is rarely offered publicly, and its owner is rarely looking. We hold relationships with collectors, families and foundations who will consider a private approach from someone they know. Names are exchanged only once both sides consent. Provenance, condition, attribution, export and title remain matters for the parties and their own specialists.",
+  "it": "Un'opera di rilievo raramente viene offerta in pubblico, e chi la possiede raramente cerca. Manteniamo rapporti con collezionisti, famiglie e fondazioni disposti a valutare un approccio privato da una persona che conoscono. I nomi si scambiano solo con il consenso di entrambe le parti. Provenienza, stato di conservazione, attribuzione, esportazione e titolarità restano alle parti e ai loro specialisti."
+ },
+ "focus.art.points": {
+  "en": "Private sales introductions | Provenance-led discretion | Collector and gallery access",
+  "it": "Presentazioni per vendite private | Riservatezza sulla provenienza | Accesso a collezioni e gallerie"
+ },
+ "focus.art.cta": {
+  "en": "Read more",
+  "it": "Approfondisci"
+ },
+ "focus.stone.name": {
+  "en": "Natural Stone",
+  "it": "Pietra naturale"
+ },
+ "focus.stone.sublabel": {
+  "en": "Travertine",
+  "it": "Travertino"
+ },
+ "focus.stone.body": {
+  "en": "We open direct lines between quarry owners and the architects, contractors and importers specifying stone at project scale. No chain of resellers.",
+  "it": "Apriamo un contatto diretto tra proprietà delle cave e studi, imprese e importatori che specificano la pietra su scala di progetto. Nessuna catena di rivenditori."
+ },
+ "focus.stone.detail": {
+  "en": "Travertine is a district, not a catalogue: block colour, vein and finish change from one bench to the next. We introduce specifiers and importers to owners in the Italian, Turkish and Gulf districts, sized to the volume actually required. Samples, technical approval, slab reservation, cutting and shipment are agreed between the parties who will perform them.",
+  "it": "Il travertino è un bacino, non un catalogo: colore del blocco, venatura e finitura cambiano da un banco all'altro. Presentiamo progettisti e importatori alla proprietà delle cave nei bacini italiani, turchi e del Golfo, nella misura del volume realmente richiesto. Campionature, approvazione tecnica, riserva delle lastre, taglio e spedizione si definiscono direttamente tra le parti."
+ },
+ "focus.stone.points": {
+  "en": "Quarry ownership access | Project-scale supply | Specification and sampling",
+  "it": "Accesso diretto alle cave | Forniture su scala di progetto | Capitolato e campionature"
+ },
+ "focus.stone.cta": {
+  "en": "Read more",
+  "it": "Approfondisci"
+ },
+ "cta.title": {
+  "en": "Some doors open | only by introduction.",
+  "it": "Alcune porte si aprono | solo su presentazione."
+ },
+ "cta.body": {
+  "en": "If your counterparty exists, they are known to someone. Tell us what you need and in which market. If we hold the relationship, we will say so. If we do not, we will say that too.",
+  "it": "La controparte che cerca esiste ed è nota a qualcuno. Ci dica di cosa ha bisogno e in quale mercato. Se abbiamo la relazione, glielo diremo. Se non l'abbiamo, glielo diremo ugualmente."
+ },
+ "cta.button": {
+  "en": "Speak with us",
+  "it": "Parlare con noi"
+ },
+ "contact.eyebrow": {
+  "en": "Direct contact",
+  "it": "Contatto diretto"
+ },
+ "contact.title": {
+  "en": "A conversation in confidence",
+  "it": "Un colloquio riservato"
+ },
+ "contact.body": {
+  "en": "Write with the outline of what you are looking for, or offering, and the market it sits in. Names are not required at this stage. Everything received is held in confidence and shared with no one until both sides agree to be known.",
+  "it": "Ci scriva indicando in sintesi ciò che cerca, o ciò che offre, e il mercato di riferimento. In questa fase i nomi non servono. Quanto riceviamo resta riservato e non viene condiviso finché entrambe le parti non acconsentono a farsi conoscere."
+ },
+ "contact.email_label": {
+  "en": "Email",
+  "it": "Email"
+ },
+ "contact.hours_label": {
+  "en": "Hours",
+  "it": "Orari"
+ },
+ "contact.hours_value": {
+  "en": "Monday to Friday, 9.00–18.00 CET",
+  "it": "Lunedì–venerdì, 9.00–18.00 CET"
+ },
+ "contact.location_label": {
+  "en": "Based in",
+  "it": "Con base in"
+ },
+ "contact.location_value": {
+  "en": "Italy · Operating internationally",
+  "it": "Italia · Operatività internazionale"
+ },
+ "contact.response_note": {
+  "en": "Enquiries are read by a named individual, not a queue. A reply normally follows within two business days.",
+  "it": "Le richieste sono lette da una persona, non da un servizio. La risposta segue di norma entro due giorni lavorativi."
+ },
+ "footer.tagline": {
+  "en": "Independent business introducer. Commodities, fine art and natural stone.",
+  "it": "Introduttore d'affari indipendente. Commodities, arte e pietra naturale."
+ },
+ "footer.rights": {
+  "en": "© KS Capital Partners. All rights reserved.",
+  "it": "© KS Capital Partners. Tutti i diritti riservati."
+ },
+ "footer.nav_heading": {
+  "en": "Navigation",
+  "it": "Navigazione"
+ },
+ "footer.legal_heading": {
+  "en": "Legal",
+  "it": "Note legali"
+ },
+ "footer.privacy_link": {
+  "en": "Privacy Notice",
+  "it": "Informativa privacy"
+ },
+ "footer.cookie_link": {
+  "en": "Cookie Notice",
+  "it": "Informativa cookie"
+ },
+ "footer.terms_link": {
+  "en": "Terms of Use",
+  "it": "Condizioni d'uso"
+ },
+ "legal.disclaimer_notice": {
+  "en": "Template text. These notices are supplied as a working draft and must be reviewed and completed by a qualified legal adviser before publication. Replace [CONTROLLER] with the registered name of the legal entity and [EMAIL] with the contact address. KS Capital Partners is responsible for the version it publishes.",
+  "it": "Testo di modello. Le presenti informative sono fornite come bozza di lavoro e devono essere verificate e completate da un consulente legale qualificato prima della pubblicazione. Sostituire [CONTROLLER] con la denominazione dell'entità registrata e [EMAIL] con l'indirizzo di contatto. La versione pubblicata resta sotto la responsabilità di KS Capital Partners."
+ },
+ "legal.privacy_title": {
+  "en": "Privacy Notice",
+  "it": "Informativa sulla privacy"
+ },
+ "legal.privacy_body": {
+  "en": "Data controller. The controller of personal data collected through this site is [CONTROLLER], reachable at [EMAIL].\n\nData collected. This site hosts no forms and collects no data through its pages: there are no fields to complete, no sign-ups and no restricted areas. The only channel of contact is the published email address. In writing to it you send us your own email address, any signature block, and the content of your message. IP address and browser type may be recorded in the logs of the server hosting the site, for security purposes and for the technically necessary period. No special categories of data are requested; please do not send any.\n\nPurpose and legal basis. Data is processed to answer the enquiry, to assess whether an introduction is possible, and to hold the correspondence that follows. The legal basis is Article 6(1)(b) GDPR, steps taken at your request before entering into a contract, and Article 6(1)(f) GDPR, the legitimate interest in responding to business correspondence and keeping a record of it.\n\nRetention. Enquiry data is kept for the time needed to reply and, where a relationship follows, for the duration of that relationship and any period required by law. Enquiries that lead to no further contact are deleted within twenty-four months.\n\nDisclosure. Data is not sold, rented or passed to third parties for marketing. It is available only to persons acting for the controller and to the providers hosting the site and the email account, appointed as processors and bound by confidentiality.\n\nYour rights. Under Articles 15 to 22 GDPR you may request access to your data, rectification, erasure, restriction of processing or portability, and you may object to processing based on legitimate interest. To exercise these rights, write to [EMAIL]; a reply follows within one month. You may also lodge a complaint with the Garante per la protezione dei dati personali.",
+  "it": "Titolare del trattamento. Il titolare dei dati raccolti tramite questo sito è [CONTROLLER], [EMAIL].\n\nDati raccolti. Questo sito non ospita moduli e non raccoglie dati attraverso le sue pagine: non vi sono campi da compilare, iscrizioni o aree riservate. L'unico canale di contatto è l'indirizzo email pubblicato. Scrivendo a tale indirizzo Lei ci trasmette il proprio indirizzo di posta, l'eventuale firma e il contenuto del messaggio. Indirizzo IP e tipo di browser possono essere registrati nei log del server che ospita il sito, per finalità di sicurezza e per il tempo tecnicamente necessario. Non sono richieste categorie particolari di dati: si raccomanda di non inviarne.\n\nFinalità e base giuridica. I dati sono trattati per rispondere alla richiesta, per valutare se una presentazione sia possibile e per conservare la corrispondenza che ne consegue. La base giuridica è l'art. 6, par. 1, lett. b) del GDPR, misure precontrattuali adottate su richiesta dell'interessato, e l'art. 6, par. 1, lett. f), legittimo interesse a rispondere alla corrispondenza d'affari e a conservarne traccia.\n\nConservazione. I dati sono conservati per il tempo necessario a rispondere e, se ne deriva una relazione, per la durata della stessa e per il periodo previsto dalla legge. Le richieste che non danno seguito ad alcun contatto sono cancellate entro ventiquattro mesi.\n\nComunicazione a terzi. I dati non sono venduti né comunicati a terzi per finalità di marketing. Vi accedono soltanto le persone che operano per il titolare e i fornitori che ospitano il sito e la casella di posta, nominati responsabili del trattamento e vincolati alla riservatezza.\n\nDiritti dell'interessato. Ai sensi degli articoli da 15 a 22 del GDPR può chiedere l'accesso ai propri dati, la rettifica, la cancellazione, la limitazione del trattamento o la portabilità, e può opporsi al trattamento fondato sul legittimo interesse. Per esercitare tali diritti scriva a [EMAIL]; la risposta segue entro un mese. Può inoltre proporre reclamo al Garante per la protezione dei dati personali."
+ },
+ "legal.cookie_title": {
+  "en": "Cookie Notice",
+  "it": "Informativa sui cookie"
+ },
+ "legal.cookie_body": {
+  "en": "This site uses technical cookies only. They are necessary for the pages to load and for the site to stay secure. It stores no preference in your browser: the two language versions are separate pages at separate addresses, and choosing a language records nothing. The technical cookies do not identify you. Neither is used to identify you.\n\nNo profiling cookies are set. No advertising, remarketing or social media cookies are set, and no third-party tracking scripts are embedded in the pages. Because only technical cookies and a language preference are involved, no consent banner is required under Article 122 of the Italian Privacy Code and the Garante's cookie guidelines.\n\nIf measurement tools are added later, this notice will be updated first. Analytics that are not fully anonymised, and any cookie set by a third party, would require prior consent through a banner offering a genuine refusal, and would run only after that consent. Stored preferences can be cleared at any time from your browser settings.",
+  "it": "Questo sito utilizza esclusivamente cookie tecnici, necessari al caricamento delle pagine e alla sicurezza del sito. Non memorizza alcuna preferenza nel browser: le due versioni linguistiche sono pagine distinte, raggiungibili da indirizzi diversi, e la scelta della lingua non comporta alcuna registrazione. I cookie tecnici non servono a identificarla.\n\nNon sono installati cookie di profilazione. Non sono installati cookie pubblicitari, di remarketing o di social network, né script di tracciamento di terze parti. Poiché si utilizzano soltanto cookie tecnici, non è richiesto alcun banner di consenso ai sensi dell'articolo 122 del Codice privacy e delle linee guida del Garante.\n\nQualora venissero introdotti strumenti di misurazione, questa informativa sarà aggiornata prima. Statistiche non integralmente anonimizzate, e qualunque cookie di terza parte, richiederebbero consenso preventivo tramite banner con effettiva possibilità di rifiuto. Le preferenze memorizzate possono essere cancellate dalle impostazioni del browser."
+ },
+ "legal.terms_title": {
+  "en": "Terms of Use",
+  "it": "Condizioni d'uso"
+ },
+ "legal.terms_body": {
+  "en": "This site is informational. It describes what KS Capital Partners does and how to make contact.\n\nNothing published here is an offer, an invitation or a solicitation to buy or sell any asset, commodity, work or financial instrument, and nothing here constitutes investment, legal, tax or accounting advice. KS Capital Partners is an independent business introducer: it does not invest, does not take positions, does not hold client funds, does not intermediate regulated financial instruments and does not carry on activities reserved to authorised persons.\n\nIntroductions are made only under a separate written agreement setting out scope, fees and confidentiality. No agreement arises from use of this site or from correspondence sent by email, and no obligation arises until both parties sign.\n\nDescriptions of markets, regions and materials are general and may change without notice. External links, where present, are outside our control. Italian law applies to the use of this site.",
+  "it": "Questo sito ha finalità informativa. Descrive l'attività di KS Capital Partners e come contattarla.\n\nNulla di quanto pubblicato costituisce offerta, invito o sollecitazione all'acquisto o alla vendita di beni, materie prime, opere o strumenti finanziari, né consulenza in materia di investimenti, legale, fiscale o contabile. KS Capital Partners è un introduttore d'affari indipendente: non investe, non assume posizioni, non detiene fondi di terzi, non intermedia strumenti finanziari regolamentati e non svolge attività riservate a soggetti autorizzati.\n\nLe presentazioni avvengono unicamente in forza di un accordo scritto separato che ne definisce oggetto, corrispettivi e riservatezza. Dall'uso del sito o dalla corrispondenza inviata per email non deriva alcun accordo e nessun obbligo sorge prima della sottoscrizione.\n\nLe descrizioni di mercati, aree e materiali hanno carattere generale e possono variare senza preavviso. I collegamenti esterni non sono sotto il nostro controllo. All'uso del sito si applica la legge italiana."
+ }
+}

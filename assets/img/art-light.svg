@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+ <defs>
+  <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+   <stop offset="0" stop-color="#ffdfae" stop-opacity=".46"/>
+   <stop offset=".6" stop-color="#d9ab6f" stop-opacity=".16"/>
+   <stop offset="1" stop-color="#b98f57" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="tbl" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#1e1a16"/><stop offset="1" stop-color="#0a0909"/>
+  </linearGradient>
+  <radialGradient id="vig2" cx=".62" cy=".3" r=".8">
+   <stop offset=".3" stop-color="#000" stop-opacity="0"/>
+   <stop offset="1" stop-color="#000" stop-opacity=".8"/>
+  </radialGradient>
+ </defs>
+ <rect width="1600" height="1000" fill="#0c0b0e"/>
+ <rect y="560" width="1600" height="440" fill="url(#tbl)"/>
+ <!-- lame di luce da una persiana -->
+ <g fill="url(#beam)">
+  <polygon points="240,0 470,0 1010,1000 640,1000"/>
+  <polygon points="560,0 700,0 1300,1000 1080,1000"/>
+  <polygon points="790,0 862,0 1520,1000 1400,1000"/>
+ </g>
+ <rect y="556" width="1600" height="3" fill="#6e5a3c" opacity=".55"/>
+ <rect width="1600" height="1000" fill="url(#vig2)"/>
+</svg>

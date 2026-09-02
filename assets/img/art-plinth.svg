@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid slice">
+ <defs>
+  <linearGradient id="cone" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#fff6e6" stop-opacity=".26"/>
+   <stop offset=".55" stop-color="#f0e3cc" stop-opacity=".09"/>
+   <stop offset="1" stop-color="#e8dcc4" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="shaft" x1="0" y1="0" x2="1" y2="0">
+   <stop offset="0" stop-color="#6f675c"/><stop offset=".16" stop-color="#cdc3b2"/>
+   <stop offset=".34" stop-color="#f4efe4"/><stop offset=".56" stop-color="#ddd4c4"/>
+   <stop offset=".8" stop-color="#8b8378"/><stop offset="1" stop-color="#4d4841"/>
+  </linearGradient>
+  <linearGradient id="cap" x1="0" y1="0" x2="1" y2="0">
+   <stop offset="0" stop-color="#8b8378"/><stop offset=".3" stop-color="#efe9dc"/>
+   <stop offset=".72" stop-color="#c3baaa"/><stop offset="1" stop-color="#5a544c"/>
+  </linearGradient>
+  <linearGradient id="base" x1="0" y1="0" x2="1" y2="0">
+   <stop offset="0" stop-color="#1b1a19"/><stop offset=".46" stop-color="#262422"/>
+   <stop offset="1" stop-color="#0d0c0c"/>
+  </linearGradient>
+  <radialGradient id="vig" cx=".5" cy=".36" r=".74">
+   <stop offset=".42" stop-color="#000" stop-opacity="0"/>
+   <stop offset="1" stop-color="#000" stop-opacity=".84"/>
+  </radialGradient>
+  <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#131316"/><stop offset="1" stop-color="#131316" stop-opacity="0"/>
+  </linearGradient>
+   <linearGradient id="footFade" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#0a0a0c" stop-opacity="0"/>
+   <stop offset=".55" stop-color="#0a0a0c" stop-opacity=".72"/>
+   <stop offset="1" stop-color="#08080a" stop-opacity=".95"/>
+  </linearGradient>
+ </defs>
+
+ <rect width="900" height="1200" fill="#131316"/>
+ <polygon points="352,0 548,0 800,1200 100,1200" fill="url(#cone)"/>
+
+ <!-- frammento di colonna scanalata su plinto -->
+ <g>
+  <rect x="336" y="196" width="228" height="744" fill="url(#shaft)"/>
+  <!-- scanalature -->
+  <g fill="#2e2a24" opacity=".30">
+   <rect x="366" y="196" width="7" height="744"/><rect x="404" y="196" width="7" height="744"/>
+   <rect x="442" y="196" width="7" height="744"/><rect x="480" y="196" width="7" height="744"/>
+   <rect x="518" y="196" width="7" height="744"/>
+  </g>
+  <!-- rottura superiore irregolare -->
+  <polygon points="336,196 564,196 564,214 536,226 508,212 470,236 436,222 398,244 366,232 336,248"
+           fill="#131316"/>
+  <polygon points="336,248 366,232 398,244 436,222 470,236 508,212 536,226 564,214 564,238 336,272"
+           fill="#000" opacity=".30"/>
+  <!-- collarino alla base del fusto -->
+  <rect x="316" y="908" width="268" height="34" fill="url(#cap)"/>
+  <rect x="316" y="908" width="268" height="3" fill="#fff" opacity=".28"/>
+ </g>
+
+ <rect x="272" y="942" width="356" height="258" fill="url(#base)"/>
+ <rect x="272" y="942" width="356" height="4" fill="#57514a" opacity=".75"/>
+ <rect y="1100" width="900" height="100" fill="#0a0a0c" opacity=".55"/>
+ <rect y="820" width="900" height="380" fill="url(#footFade)"/>
+ <rect width="900" height="1200" fill="url(#vig)"/>
+</svg>

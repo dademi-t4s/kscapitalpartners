@@ -1,0 +1,108 @@
+{
+  "_meta": {
+    "brand": "KS Capital Partners — independent business introducer",
+    "house_style": "Near-black editorial architectural photography. ONE warm directional light source (~2900-3200K), everything else falls into shadow. Medium-format quality, 80mm equivalent, f/8, deep tonal separation, crushed blacks (#0a0a0b–#141416), warm champagne-gold highlights (#c9a227–#d8b476), desaturated midtones. Quiet, private, expensive. No hype, no drama.",
+    "negative_global": "people, faces, hands, figures, crowds, text, lettering, typography, numbers, watermark, signature, logo, branding, signage, labels, UI elements, borders, frames, collage, split screen, illustration, painting, drawing, 3d render, CGI, video game look, HDR, oversaturated, teal and orange grade, neon, magenta, purple, blue colour cast, cyan, green tint, lens flare stars, bokeh balls, heavy vignetting artefacts, cluttered, busy, cheerful, bright daylight, flat frontal lighting, ring light, stock photo look, tilted horizon, dutch angle, fisheye, wide angle distortion, low resolution, jpeg artefacts, plastic surfaces, glossy plastic, dust spots, scratches, chromatic aberration",
+    "note_openai": "The OpenAI images endpoint has no negative-prompt parameter, so each `prompt` already ends with an explicit exclusion clause. The separate `negative` field is kept for Flux / SDXL / Midjourney portability (Midjourney: append as --no).",
+    "sizes": "gpt-image-2 accepts 1536x1024 (3:2 landscape), 1024x1536 (2:3 portrait), 1024x1024. og-image is generated at 1536x1024 and cropped to 1200x630.",
+    "contrast_rule": "No pixel beneath live type may be lighter than #1d1d20. At that ceiling the gold #c9a227 reads 6.9:1 and the bone #f2ede4 reads 14.3:1 against the plate — both clear AA, gold clears AAA for large display sizes.",
+    "contrast_measured": "Measured on the procedural fallback at 1200px wide, sampling the whole text column (x 6-48%, y 30-62%): hero #181612 -> gold 7.5:1 / bone 15.5:1; about #111110 -> 7.8:1 / 16.2:1; network #2a2826 -> 6.1:1 / 12.6:1; og #0e0e0e -> 8.0:1 / 16.6:1. Re-run the same check after dropping photographs in: a photograph is brighter than the fallback it replaces.",
+    "alt_note": "scripts/build.py marks every .art figure aria-hidden=\"true\", so these plates are decorative and must ship with alt=\"\". The alt strings here are held for any slot later promoted to content imagery; the strings that actually reach the reader are the section headings and the og_headline."
+  },
+  "hero": {
+    "size": "1536x1024",
+    "ratio": "3:2",
+    "prompt": "A monumental dark stone corridor photographed straight down its axis, opening at the far end onto a calm sunlit sea horizon. Colossal fluted piers of honed dark grey limestone recede in perfect one-point perspective, their inner edges catching a thin warm rim of light. The far opening is a tall rectangular aperture filled with pale gold haze and a single clean sea horizon line. Low late-afternoon sun pours through it and spills in one long unbroken sheet across the polished stone floor, which reflects the aperture as a soft elongated smear. Ninety percent of the frame is in deep shadow; only the aperture, the floor spill and the rim-lit pier edges carry light. Colour: near-black stone at #0d0d0f, warm champagne highlights at #d8b476, no other hue. Medium-format architectural photography, 50mm, f/8, tripod, long exposure, perfectly level horizon, symmetrical composition with generous dark space at left and right for overlaid type. Subtle fine film grain, natural falloff, no artificial glow. Serene, silent, monumental, expensive. Do not include: people, figures, boats, birds, text, lettering, signage, logos, watermarks, furniture, plants, visible light fixtures, blue or cyan cast, HDR look, lens flare.",
+    "negative": "people, figures, silhouettes, boats, birds, text, lettering, signage, logo, watermark, furniture, plants, visible lamps, HDR, oversaturated, blue cast, cyan, teal and orange, lens flare stars, tilted horizon, fisheye, clutter, bright daylight, flat lighting, 3d render, illustration, low resolution",
+    "css": "object-fit: cover with object-position: 50% 58% so the aperture and floor spill sit on the lower-centre axis; overlay a left-weighted scrim linear-gradient(90deg, rgba(10,10,11,.94) 0%, rgba(10,10,11,.80) 38%, rgba(10,10,11,.30) 72%, rgba(10,10,11,.55) 100%) plus a bottom fade, keeping every pixel under the headline at or below #1d1d20 (gold 6.9:1, bone 14.3:1).",
+    "alt": {
+      "en": "A dark stone colonnade opening onto a sunlit sea horizon.",
+      "it": "Un colonnato in pietra scura che si apre sull'orizzonte marino."
+    }
+  },
+  "focus-oil": {
+    "size": "1024x1536",
+    "ratio": "2:3",
+    "prompt": "Extreme close detail of the lid of a black steel oil drum, seen from a low three-quarter angle in near darkness. The surface is wet: a thin film of water and oil beads across the matte black steel, and the concentric machine-rolled rings and the raised chime ring catch a single hard raking highlight from one warm light source at the upper right, drawing one bright crescent across the top edge and scattering tiny specular points through the beading. The bung plug sits off-centre, its threads dark and precise. Everything beyond the lit crescent falls to true black. Colour: black steel at #0b0b0c, one warm champagne specular at #e8d5a8, a faint amber sheen in the oil film, nothing else. Macro medium-format still life, 100mm, f/11, tack sharp on the lit rim, deep shadow occupying two thirds of the vertical frame. Fine film grain, industrial, restrained, no drama. Do not include: text, stencilled letters, hazard labels, numbers, logos, branding, watermarks, rust, dents, dirt, spills, people, hands, tools, blue or cyan highlights, coloured reflections, rainbow oil slick, HDR.",
+    "negative": "text, stencil, letters, numbers, hazard label, logo, branding, watermark, rust, dents, dirt, grime, spill, people, hands, tools, rainbow oil slick, iridescent, blue highlight, cyan, purple, HDR, oversaturated, flat lighting, studio softbox, white background, 3d render, illustration, low resolution",
+    "css": "object-fit: cover with object-position: 50% 34% to hold the lit crescent in the upper third; the card's caption block sits over the lower two thirds behind a linear-gradient(to top, rgba(8,8,10,.96) 0%, rgba(8,8,10,.72) 34%, transparent 62%) so type never crosses the specular.",
+    "alt": {
+      "en": "The wet lid of a steel drum under a single raking light.",
+      "it": "Il coperchio bagnato di un fusto d'acciaio sotto una sola luce radente."
+    }
+  },
+  "focus-art": {
+    "size": "1024x1536",
+    "ratio": "2:3",
+    "prompt": "A classical white marble torso, Hellenistic, armless and headless, on a plain dark stone plinth in an unlit museum room. A single narrow warm spotlight falls from high front-left, modelling the chest and flank in long soft gradients and leaving the right side of the body in deep shadow. The marble is warm bone-white, faintly translucent at the edges, its surface showing fine crystalline grain and the honest wear of age. The wall behind is featureless near-black and recedes completely. The plinth reads only as a darker mass with one thin lit edge. Colour: bone white #efe9dd through warm grey to black, ambient neutral, no colour cast. Medium-format museum photography, 90mm, f/8, vertical composition with the torso centred and generous black headroom above. Subtle film grain, gallery quiet, reverent, expensive. Do not include: faces, heads, eyes, complete figures, other sculptures, visitors, people, text, wall labels, placards, captions, logos, watermarks, glass cases, barriers, ropes, visible lamps, coloured gels, blue cast, HDR.",
+    "negative": "face, head, eyes, portrait, complete figure, people, visitors, other sculptures, text, wall label, placard, caption, logo, watermark, glass case, vitrine, barrier, rope, visible lamps, coloured gel, blue cast, cyan, purple, HDR, oversaturated, flat lighting, white background, 3d render, illustration, low resolution",
+    "css": "object-fit: cover with object-position: 50% 40% so the lit chest sits on the upper-middle third; the same bottom scrim as the other two focus cards keeps the label and rule legible without touching the sculpture's lit mass.",
+    "alt": {
+      "en": "A classical marble torso lit by a single museum spotlight.",
+      "it": "Un torso marmoreo classico illuminato da un solo faretto museale."
+    }
+  },
+  "focus-stone": {
+    "size": "1024x1536",
+    "ratio": "2:3",
+    "prompt": "The corner of a single monolithic block of travertine, filling the frame, photographed close in a dark quarry yard at dusk. Two sawn faces meet at a crisp vertical arris: the left face takes a warm low raking light that rakes across the stone and reveals its horizontal bedding, open pores, and the fine parallel striations left by the gang saw; the right face falls away into deep shadow and reads almost black. The top chamfer catches one thin bright edge. The travertine is warm cream and biscuit, banded in ivory, ochre and pale grey, weighty and matte. Background is featureless darkness. Colour: cream #d9cdb6 in the light, #14120f in the shadow, warm throughout, no cool tones. Medium-format still life, 80mm, f/11, vertical, the block cropped by all four edges to feel monumental. Fine film grain, tactile, geological, silent. Do not include: people, machinery, forklifts, cranes, tools, cables, text, stencilled numbers, quarry markings, chalk marks, logos, watermarks, polished or shiny surfaces, sky, vegetation, dust haze, blue cast, HDR.",
+    "negative": "people, machinery, forklift, crane, tools, cables, chains, text, stencilled numbers, quarry marking, chalk mark, logo, watermark, polished shine, glossy, sky, clouds, vegetation, grass, dust haze, blue cast, cyan, HDR, oversaturated, flat lighting, white background, 3d render, illustration, low resolution",
+    "css": "object-fit: cover with object-position: 38% 50% to keep the lit face and the vertical arris inside the card at every breakpoint; bottom scrim identical to the sibling cards so the three focus tiles read as one set.",
+    "alt": {
+      "en": "The sawn corner of a travertine block in raking light.",
+      "it": "Lo spigolo segato di un blocco di travertino in luce radente."
+    }
+  },
+  "about": {
+    "size": "1536x1024",
+    "ratio": "3:2",
+    "prompt": "A quiet interior detail in a private office at the end of the day. A wide dark walnut table, almost black, its grain visible only where a low sun rakes across it from the right through a tall unseen window. The light lays one warm band along the table and throws long parallel shadows of the window mullions across the surface and onto the far wall. On the table, at the very edge of the frame, a single closed leather folio and nothing else; the rest is empty polished wood. The room beyond is unlit and reads as depth, not detail. Colour: near-black wood #101012, warm amber light #d8b476, one cool neutral in the shadow, nothing more. Medium-format interior photography, 55mm, f/8, horizontal, camera low and close to the table plane, generous empty space at left for overlaid type. Subtle film grain, still, discreet, expensive, unmistakably private. Do not include: people, hands, faces, laptops, phones, screens, cables, papers with text, books with titles, logos, branding, watermarks, flowers, plants, coffee cups, clutter, decorative objects, bright daylight, blue cast, HDR.",
+    "negative": "people, hands, faces, laptop, phone, screen, monitor, cables, papers with text, book titles, logo, branding, watermark, flowers, plants, coffee cup, clutter, ornaments, bright daylight, overhead lighting, blue cast, cyan, HDR, oversaturated, flat lighting, wide angle distortion, 3d render, illustration, low resolution",
+    "css": "object-fit: cover with object-position: 70% 55% so the light band and mullion shadows stay in the right half; the copy column sits over the left with linear-gradient(90deg, rgba(10,10,11,.92) 0%, rgba(10,10,11,.62) 46%, transparent 78%) and mix-blend-mode: normal — never multiply, which would crush the amber band.",
+    "alt": {
+      "en": "Low sun crossing a dark table in an empty office.",
+      "it": "Sole basso su un tavolo scuro in un ufficio deserto."
+    }
+  },
+  "network": {
+    "size": "1536x1024",
+    "ratio": "3:2",
+    "prompt": "A long-exposure photograph looking down on a vast dark landscape at night from very high altitude, in which several thin warm light trails curve across the frame in long shallow arcs and cross one another at two or three points. The trails are the only bright elements: fine, continuous, champagne-gold, varying in brightness along their length, slightly blurred at the ends by movement. Beneath them the ground is almost entirely black with the faintest topographic modulation, and a single warm haze glows low on one edge like a distant coastline. No cities, no grids, no visible settlements. Abstract, quiet, vast. Colour: black #08080a with warm gold #c9a227 trails and one pale champagne bloom, no other colour. Medium-format long exposure, 60mm, f/5.6, several minutes, horizontal, composition weighted to the right so the left third stays almost empty. Fine film grain, cinematic, contemplative. Do not include: globe, planet, earth from space, world map, continents, country outlines, dots, pins, markers, connecting node graphics, network diagram, circuit board, data visualisation, grid overlay, city lights, streets, buildings, aircraft, satellites, stars, constellations, text, logos, watermarks, blue cast, cyan, neon, HDR.",
+    "negative": "globe, planet, earth from space, world map, continent, country outline, dots, pins, markers, node graph, network diagram, circuit board, data visualisation, infographic, grid overlay, city lights, streets, buildings, aircraft, satellite, stars, constellations, text, logo, watermark, blue cast, cyan, neon, purple, HDR, oversaturated, clutter, 3d render, illustration, low resolution",
+    "css": "object-fit: cover with object-position: 62% 50% so the arc crossings land right of centre; a .art__veil IS required here — measured on the shipped fallback an unveiled trail crossing the text column reads 1.0:1 against the gold, and the default left-weighted scrim is what pulls it to 6.1:1.",
+    "alt": {
+      "en": "Long-exposure light trails crossing a dark landscape.",
+      "it": "Scie luminose a lunga esposizione che si incrociano su un paesaggio notturno."
+    }
+  },
+  "cta-texture": {
+    "size": "1536x1024",
+    "ratio": "3:2",
+    "prompt": "A flat-on surface study of a slab of very dark stone, filling the entire frame edge to edge: black basalt-toned marble, honed rather than polished, with sparse pale veining that drifts diagonally across the field in thin irregular filaments and one broader vein that fades before it reaches the corner. The surface is lit by one broad soft warm light from the upper left, giving a slow luminance gradient from a faint warm sheen at top-left to near-total black at bottom-right, with no hotspot and no specular glare. The grain is fine and even; the veins are bone and pale ochre, never white, never blue. Absolutely flat perspective, no edges of the slab visible, no depth, no objects. Colour: #0c0c0e to #1a1a1d with #cbb98f veining. Medium-format copy-stand photography, 90mm, f/11, evenly exposed, tileable feel, extremely low overall contrast so it can sit behind type. Fine film grain. Do not include: slab edges, corners, joints, grout, objects, tools, hands, text, logos, watermarks, reflections, highlights, hotspots, glare, glossy polish, water, blue or grey-blue veining, white veining, high contrast, dramatic lighting, vignette.",
+    "negative": "slab edge, corner, joint, grout, object, tool, hand, text, logo, watermark, reflection, hotspot, glare, glossy, polished, wet, water, blue veining, white veining, marble carrara look, high contrast, dramatic lighting, hard vignette, HDR, oversaturated, 3d render, tileable seams, low resolution",
+    "css": "background-size: cover, background-position: center, applied to the section with opacity .28 on a ::before layer set to mix-blend-mode: luminosity over the #0a0a0b section colour; that pairing caps the plate at roughly #191919 so the gold CTA label holds 7:1 without a second scrim.",
+    "alt": {
+      "en": "Dark veined stone.",
+      "it": "Pietra scura venata."
+    }
+  },
+  "og-image": {
+    "size": "1536x1024",
+    "ratio": "3:2 generated, cropped to 1200x630",
+    "prompt": "A wide cinematic composition, deliberately asymmetric: the left third of the frame is near-empty deep shadow, an almost flat black wall plane with only the faintest warm gradient, and the right two thirds carry a single dark stone architectural opening through which a low warm sun throws one clean shaft of light across a polished floor toward the viewer. A calm horizon sits just above the centre line on the right. Every bright value is confined to the right half; the left third never rises above near-black. Colour: #0a0a0b shadow, #d8b476 light, nothing else. Medium-format architectural photography, 50mm, f/8, level horizon, wide horizontal composition with intentional negative space at left for a headline. Subtle film grain, restrained, expensive, editorial. Do not include: people, figures, text, lettering, typography, headline, logos, watermarks, borders, frames, UI, centred composition, symmetrical composition, clutter, objects in the left third, bright values in the left third, blue cast, HDR.",
+    "negative": "people, figures, text, lettering, typography, headline, logo, watermark, border, frame, UI, centred composition, symmetrical, clutter, objects in left third, bright left side, blue cast, cyan, HDR, oversaturated, busy, flat lighting, 3d render, illustration, low resolution",
+    "css": "Not a CSS asset: crop the 1536x1024 render to 1200x630 from the vertical centre (sips -c 630 1200 after resizing width to 1200), then composite the headline in the left 400px with a linear-gradient(90deg, rgba(10,10,11,.95), rgba(10,10,11,0) 46%) plate baked into the PNG so it renders identically in every social client.",
+    "og_headline": {
+      "en": "Introductions that hold.",
+      "it": "Presentazioni che durano."
+    },
+    "og_subline": {
+      "en": "Commodities · Fine Art · Natural Stone",
+      "it": "Materie prime · Arte · Pietra naturale"
+    },
+    "alt": {
+      "en": "KS Capital Partners.",
+      "it": "KS Capital Partners."
+    }
+  }
+}

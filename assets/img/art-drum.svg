@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid slice">
+ <defs>
+  <linearGradient id="lid" x1=".25" y1="0" x2=".8" y2="1">
+   <stop offset="0" stop-color="#2b261f"/><stop offset=".38" stop-color="#151316"/>
+   <stop offset="1" stop-color="#080709"/>
+  </linearGradient>
+  <linearGradient id="rim" x1="0" y1="0" x2=".9" y2=".7">
+   <stop offset="0" stop-color="#f3d8a8" stop-opacity=".95"/>
+   <stop offset=".34" stop-color="#c8a468" stop-opacity=".55"/>
+   <stop offset=".7" stop-color="#7d6238" stop-opacity=".16"/>
+   <stop offset="1" stop-color="#4a3a20" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="side" x1="0" y1="0" x2="1" y2="0">
+   <stop offset="0" stop-color="#0d0c0e"/><stop offset=".3" stop-color="#221d18"/>
+   <stop offset=".62" stop-color="#100e11"/><stop offset="1" stop-color="#060507"/>
+  </linearGradient>
+  <radialGradient id="sheen" cx=".33" cy=".26" r=".5">
+   <stop offset="0" stop-color="#f0d3a0" stop-opacity=".26"/>
+   <stop offset="1" stop-color="#f0d3a0" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="vig3" cx=".5" cy=".4" r=".7">
+   <stop offset=".38" stop-color="#000" stop-opacity="0"/>
+   <stop offset="1" stop-color="#000" stop-opacity=".9"/>
+  </radialGradient>
+ </defs>
+
+ <rect width="900" height="1200" fill="#09080a"/>
+
+ <!-- fianco del fusto -->
+ <path d="M40 520 L40 860 A410 190 0 0 0 860 860 L860 520 Z" fill="url(#side)"/>
+ <!-- coperchio -->
+ <ellipse cx="450" cy="520" rx="410" ry="190" fill="url(#lid)"/>
+ <ellipse cx="450" cy="520" rx="410" ry="190" fill="url(#sheen)"/>
+ <ellipse cx="450" cy="520" rx="410" ry="190" fill="none" stroke="url(#rim)" stroke-width="11"/>
+ <ellipse cx="450" cy="524" rx="352" ry="160" fill="none" stroke="url(#rim)" stroke-width="5" opacity=".62"/>
+ <!-- nervature concentriche stampate -->
+ <ellipse cx="450" cy="528" rx="252" ry="112" fill="none" stroke="url(#rim)" stroke-width="4" opacity=".38"/>
+ <ellipse cx="450" cy="530" rx="186" ry="82" fill="none" stroke="url(#rim)" stroke-width="3" opacity=".3"/>
+ <!-- tappo -->
+ <ellipse cx="318" cy="470" rx="82" ry="38" fill="#0c0b0d"/>
+ <ellipse cx="318" cy="470" rx="82" ry="38" fill="none" stroke="url(#rim)" stroke-width="6"/>
+ <ellipse cx="318" cy="466" rx="52" ry="23" fill="none" stroke="url(#rim)" stroke-width="3" opacity=".5"/>
+
+ <rect width="900" height="1200" fill="url(#vig3)"/>
+</svg>
