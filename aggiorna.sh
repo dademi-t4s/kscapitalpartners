@@ -8,4 +8,4 @@ git commit -q -m "${1:-aggiornamento}" || { echo "Niente da pubblicare."; exit 0
 git push -q
 echo
 echo "  Pubblicato. Online fra circa un minuto:"
-echo "  https://protiviti-deiv-ademi.github.io/kscapitalpartners/"
+echo "  https://dademi-t4s.github.io/kscapitalpartners/"
