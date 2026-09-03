@@ -11,7 +11,7 @@ import json, os, pathlib, re, html
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 COPY = json.load(open(ROOT / "scripts" / "copy.json", encoding="utf-8"))
-SITE = "https://www.kscapitalpartners.it"
+SITE = "https://kscapitalpartners.it"
 
 # Gli indirizzi assoluti servono solo a canonical, hreflang, og:url e ai dati
 # strutturati: sono l'indirizzo definitivo del sito. Tutto ciò che il browser
