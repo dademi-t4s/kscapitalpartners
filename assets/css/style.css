@@ -1212,3 +1212,14 @@ html.js .rail { display: flex; }
   font-variant-numeric: tabular-nums;
 }
 .contact__phone:hover { color: var(--gold); background-size: 100% 1px; }
+
+/* --- Fotografia della sezione "About" -----------------------------------
+   Arriva dal cliente ed è più fredda e contrastata delle altre del sito.
+   Un filo di calore e un contrasto più morbido la fanno sedere accanto alle
+   altre senza rigenerarla. Il punto focale è alzato perché nel ritaglio
+   orizzontale del mobile restino i volti e la stretta di mano.
+   ---------------------------------------------------------------------- */
+.about__media img {
+  --focal: 50% 45%;
+  filter: saturate(.9) sepia(.12) contrast(1.03) brightness(.96);
+}
