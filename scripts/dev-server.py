@@ -90,6 +90,42 @@ window.addEventListener('load', function(){
 """
 
 
+SPY = """
+<script>
+window.addEventListener('load', function(){
+  document.documentElement.style.scrollBehavior = 'auto';
+  var stops = [0, .15, .32, .48, .64, .80, 1], out = [], i = 0;
+  function step(){
+    if (i >= stops.length) {
+      var pre = document.createElement('pre'); pre.id = 'audit-out';
+      pre.textContent = out.join('\\n');
+      document.body.appendChild(pre); return;
+    }
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var target = Math.round(max * stops[i]);
+    document.documentElement.scrollTop = target;
+    window.scrollTo(0, target);
+    // In headless viene prodotto un solo frame e gli eventi scroll non
+    // vengono consegnati: lo emettiamo a mano per collaudare il gestore.
+    window.dispatchEvent(new Event('scroll'));
+    setTimeout(function(){
+      var got = Math.round(window.scrollY || document.documentElement.scrollTop);
+      var line = window.innerHeight * 0.34, mid = '-';
+      [].forEach.call(document.querySelectorAll('section[id]'), function(s){
+        if (s.getBoundingClientRect().top <= line) mid = s.id;
+      });
+      var cur = document.querySelector('.nav__link[aria-current="true"]');
+      out.push('chiesto ' + target + 'px, ottenuto ' + got + 'px  |  sezione: ' +
+               mid + '  |  menu: ' + (cur ? cur.getAttribute('data-nav') : 'nessuno'));
+      i++; step();
+    }, 450);
+  }
+  step();
+});
+</script>
+"""
+
+
 REVIEW = """
 <style id="review-mode">
   /* Solo per le catture di controllo: niente attese di scroll, hero a misura schermo */
@@ -150,6 +186,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 inject = REVIEW + RELOAD
             if "audit=1" in self.path:
                 inject = AUDIT
+            if "spy=1" in self.path:
+                inject = SPY
             html = html.replace("</body>", inject + "</body>")
             body = html.encode("utf-8")
             self.send_response(200)

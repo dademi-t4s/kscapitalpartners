@@ -59,10 +59,12 @@ COMPANY = {
     "pec":        "kscapitalpartners@pec.it",
 }
 
+# L'ordine deve seguire quello delle sezioni nella pagina: il menu si
+# evidenzia allo scroll, e un ordine diverso lo fa saltare avanti e indietro.
 NAV = [
     ("home",     {"it": "Home",             "en": "Home"}),
-    ("about",    {"it": "Chi siamo",        "en": "About"}),
     ("focus",    {"it": "Aree di attività", "en": "Focus Areas"}),
+    ("about",    {"it": "Chi siamo",        "en": "About"}),
     ("approach", {"it": "Metodo",           "en": "Approach"}),
     ("network",  {"it": "Rete",             "en": "Network"}),
     ("contact",  {"it": "Contatti",         "en": "Contact"}),

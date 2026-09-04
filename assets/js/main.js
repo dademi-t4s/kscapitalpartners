@@ -188,31 +188,54 @@
     });
   }
 
-  /* --- Voce di menu attiva in base alla sezione visibile ----------------- */
+  /* --- Voce di menu attiva in base alla sezione visibile -----------------
+     Non si usa intersectionRatio: quella è la frazione VISIBILE DELLA SEZIONE,
+     quindi una sezione corta tutta a schermo (1.0) batte una lunga che riempie
+     il monitor (0.4), e l'evidenziazione salta alla voce sbagliata.
+     Si prende invece l'ultima sezione il cui bordo superiore ha già superato
+     una linea di riferimento a un terzo dello schermo: monotòno, sempre
+     nell'ordine della pagina, e indipendente dall'altezza delle sezioni.
+     ---------------------------------------------------------------------- */
   function initScrollSpy() {
     var links = all('.nav__link[data-nav]').concat(all('.rail__item[data-rail]'));
-    if (!links.length || !('IntersectionObserver' in window)) return;
+    if (!links.length) return;
     var key = function (l) { return l.getAttribute('data-nav') || l.getAttribute('data-rail'); };
-    var map = {};
-    links.forEach(function (l) { map[key(l)] = l; });
-    var sections = Object.keys(map)
-      .map(function (id) { return document.getElementById(id); })
-      .filter(Boolean);
-    if (!sections.length) return;
 
-    var visible = {};
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { visible[en.target.id] = en.isIntersecting ? en.intersectionRatio : 0; });
-      var best = null, bestRatio = 0;
-      Object.keys(visible).forEach(function (id) {
-        if (visible[id] > bestRatio) { bestRatio = visible[id]; best = id; }
-      });
+    var ids = [];
+    links.forEach(function (l) {
+      var k = key(l);
+      if (ids.indexOf(k) === -1 && document.getElementById(k)) ids.push(k);
+    });
+    if (!ids.length) return;
+
+    var current = null;
+    function update() {
+      var line = window.innerHeight * 0.34;
+      var active = ids[0];
+      for (var i = 0; i < ids.length; i++) {
+        var el = document.getElementById(ids[i]);
+        if (el && el.getBoundingClientRect().top <= line) active = ids[i];
+      }
+      // In fondo alla pagina vince sempre l'ultima sezione: senza questo,
+      // una sezione finale più corta della finestra non verrebbe mai raggiunta.
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+        active = ids[ids.length - 1];
+      }
+      if (active === current) return;
+      current = active;
       links.forEach(function (l) {
-        if (key(l) === best && bestRatio > 0) l.setAttribute('aria-current', 'true');
+        if (key(l) === active) l.setAttribute('aria-current', 'true');
         else l.removeAttribute('aria-current');
       });
-    }, { threshold: [0.12, 0.4, 0.75], rootMargin: '-20% 0px -45% 0px' });
-    sections.forEach(function (s) { io.observe(s); });
+    }
+
+    // Qui non si passa da requestAnimationFrame: update() legge sei rettangoli
+    // e non scrive nulla nel layout, quindi costa meno del giro di rAF. In più
+    // resta corretto anche dove i frame non vengono prodotti (schede in secondo
+    // piano, ambienti headless), dove un flag legato a rAF resterebbe bloccato.
+    on(window, 'scroll', update, { passive: true });
+    on(window, 'resize', update, { passive: true });
+    update();
   }
 
   /* --- Bagliore che segue il puntatore ----------------------------------- */
