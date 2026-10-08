@@ -832,12 +832,13 @@ html.js.has-pointer .spotlight { opacity: 1; }
 
 /* --- Rete -------------------------------------------------------------- */
 .network { overflow: hidden; isolation: isolate; }
-/* La scala è un'immagine figurativa e passa sotto l'elenco delle controparti:
-   a .30 la ringhiera resta leggibile come atmosfera e il testo come testo
-   (il chiaro più forte dei gradini dà 5,4:1 col grigio delle voci). */
+/* Terrazza sul Mediterraneo: cielo e mare sfumati sotto il testo, la balaustra
+   a destra sotto l'elenco delle controparti. A .20 resta atmosfera e il testo
+   resta testo: misurato sui pixel, a testo nascosto, il punto più chiaro dietro
+   ogni riga lascia almeno 4,5:1 da 1024 a 1920px. */
 .network__bg {
   position: absolute; inset: 0; z-index: -1;
-  opacity: .3;
+  opacity: .2;
   -webkit-mask-image: radial-gradient(120% 90% at 78% 50%, #000 30%, transparent 78%);
           mask-image: radial-gradient(120% 90% at 78% 50%, #000 30%, transparent 78%);
 }
