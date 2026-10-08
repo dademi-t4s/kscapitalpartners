@@ -1,7 +1,7 @@
 {
  "values.reach.name": {
-  "en": "Global Reach",
-  "it": "Portata globale"
+  "en": "International Reach",
+  "it": "Portata internazionale"
  },
  "values.reach.body": {
   "en": "Reach measured in people, not offices. Europe, the Mediterranean, the Gulf, North America. Held directly, kept in person.",
@@ -16,16 +16,16 @@
   "it": "Nulla viene pubblicato. Nessun nome, nessun logo, nessun caso di studio. Ciascuna parte conosce l'altra solo col consenso di entrambe."
  },
  "values.trust.name": {
-  "en": "Trusted Introducer",
-  "it": "Introduttore di fiducia"
+  "en": "Independence",
+  "it": "Indipendenza"
  },
  "values.trust.body": {
-  "en": "We are paid for the introduction, not for advice. No positions, no client funds, no side of the table to favour.",
-  "it": "Siamo remunerati per la presentazione, non per un parere. Nessuna posizione, nessun fondo di terzi, nessun lato da favorire."
+  "en": "Whether we act independently or under a specific mandate, our role is set out in writing and clear to both sides from the first call.",
+  "it": "Che si agisca in autonomia o su mandato specifico, il nostro ruolo è definito per iscritto e chiaro a entrambe le parti fin dalla prima chiamata."
  },
  "values.results.name": {
-  "en": "Results Driven",
-  "it": "Orientati al risultato"
+  "en": "Selectivity",
+  "it": "Selettività"
  },
  "values.results.body": {
   "en": "Both sides are qualified before either is named. The measure is a meeting that leads somewhere, not a list of contacts.",
@@ -60,12 +60,12 @@
   "it": "02"
  },
  "approach.step2.name": {
-  "en": "Mapping the room",
-  "it": "Mappa delle relazioni"
+  "en": "Qualifying both sides",
+  "it": "Qualificare le parti"
  },
  "approach.step2.body": {
-  "en": "We know who sits where, and who will actually take the call. The right name is chosen, approached quietly, and confirmed as available before either party is told anything.",
-  "it": "Sappiamo chi siede dove e chi risponderà davvero. Il nome giusto viene scelto, avvicinato con discrezione e confermato disponibile prima che alle parti venga detto alcunché."
+  "en": "We know who sits where, and who will actually take the call. The right counterparty is chosen and approached quietly; identity, authority and capacity are checked before either side is told anything.",
+  "it": "Sappiamo chi siede dove, e chi risponderà davvero. La controparte giusta viene scelta e avvicinata con discrezione; identità, poteri e capacità vengono verificati prima che a una delle parti venga detto qualcosa."
  },
  "approach.step3.num": {
   "en": "03",
@@ -84,16 +84,12 @@
   "it": "04"
  },
  "approach.step4.name": {
-  "en": "Alongside",
-  "it": "Accanto alle parti"
+  "en": "Stepping back",
+  "it": "Un passo indietro"
  },
  "approach.step4.body": {
-  "en": "We stay reachable while the relationship finds its own shape. Where a question of language, culture or timing arises, we answer it. The transaction belongs to the principals.",
-  "it": "Restiamo raggiungibili mentre la relazione trova la propria forma. Se sorge una questione di lingua, cultura o tempi, rispondiamo. L'operazione appartiene alle parti."
- },
- "approach.note": {
-  "en": "We give no investment, legal or tax advice, and we hold no position in what follows.",
-  "it": "Non prestiamo consulenza in materia di investimenti, legale o fiscale e non deteniamo alcuna posizione in ciò che segue."
+  "en": "Once the parties meet, execution belongs to them and to their own legal, banking and tax advisers. We stay reachable, within the scope agreed, for questions of language, culture or timing.",
+  "it": "Quando le parti si incontrano, l'esecuzione spetta a loro e ai rispettivi consulenti legali, bancari e fiscali. Restiamo raggiungibili, nei limiti dell'incarico, per questioni di lingua, cultura o tempi."
  },
  "network.eyebrow": {
   "en": "The network",
@@ -120,20 +116,20 @@
   "it": "I nomi non sono pubblicati, né qui né altrove. La rete si descrive in termini generali e si rivela solo alla parte interessata, previo consenso."
  },
  "hero.eyebrow": {
-  "en": "Independent introducer",
-  "it": "Introduttore indipendente"
+  "en": "Introductions & advisory · Milan",
+  "it": "Introduzioni d'affari e advisory · Milano"
  },
  "hero.title": {
   "en": "Discreet introductions. | Made across borders. | Real counterparties.",
   "it": "Presentazioni riservate. | Oltre i confini. | Controparti reali."
  },
  "hero.body": {
-  "en": "We are an independent business introducer. We bring two qualified parties to the same table in physical commodities, fine art and natural stone; the transaction remains theirs.",
-  "it": "Siamo un introduttore d'affari indipendente. Portiamo allo stesso tavolo due parti qualificate nelle commodities fisiche, nell'arte e nella pietra naturale; l'operazione resta loro."
+  "en": "KS Capital Partners S.r.l. is a Milan-based independent business introduction and advisory firm operating across selected cross-border markets. We bring principals and qualified counterparties together in commodities, fine art and natural stone; the transaction remains theirs.",
+  "it": "KS Capital Partners S.r.l. è una società indipendente di introduzione d'affari e advisory con sede a Milano, attiva su mercati internazionali selezionati. Mettiamo in contatto principal e controparti qualificate nelle materie prime, nell'arte e nella pietra naturale; l'operazione resta loro."
  },
  "hero.cta_primary": {
-  "en": "Request a call",
-  "it": "Primo contatto"
+  "en": "Start a confidential conversation",
+  "it": "Avvia una conversazione riservata"
  },
  "hero.cta_secondary": {
   "en": "Focus areas",
@@ -152,24 +148,24 @@
   "it": "La presentazione è il lavoro."
  },
  "about.lead": {
-  "en": "KS Capital Partners holds relationships built over years and places them where they are needed. We do not invest, do not intermediate financial instruments and do not manage capital.",
-  "it": "KS Capital Partners custodisce relazioni costruite negli anni e le mette a disposizione di chi dovrebbe parlarsi. Non investe, non intermedia strumenti finanziari, non gestisce capitali."
+  "en": "KS Capital Partners holds relationships built over years and places them where they are needed.",
+  "it": "KS Capital Partners custodisce relazioni costruite negli anni e le mette a disposizione dove servono."
  },
  "about.body_1": {
-  "en": "We are independent. No mandate on either side, no ownership, no position in the outcome. That neutrality is why a door opens: there is no side for us to favour, and both parties know what we are and what we are not before the first call. We are paid for the introduction and the relationship behind it.",
-  "it": "Siamo indipendenti. Nessun mandato su alcun lato, nessuna partecipazione, nessun interesse nell'esito. È questa neutralità ad aprire le porte: non abbiamo una parte da favorire, ed entrambe sanno cosa siamo, e cosa non siamo, prima della prima chiamata. Siamo remunerati per la presentazione e per la relazione che la rende possibile."
+  "en": "We facilitate selected cross-border introductions between principals and qualified counterparties, working independently or under transaction-specific mandates and engagement arrangements. We do not take ownership of the assets introduced and do not act as principal unless expressly agreed otherwise. We do not manage client capital, hold client funds or provide regulated financial services.",
+  "it": "Facilitiamo introduzioni internazionali selezionate tra principal e controparti qualificate, in autonomia oppure sulla base di mandati e incarichi specifici per la singola operazione. Non acquisiamo la proprietà dei beni presentati e non agiamo in qualità di principal, salvo diverso accordo espresso. Non gestiamo capitali dei clienti, non deteniamo fondi di terzi e non prestiamo servizi finanziari regolamentati."
  },
  "about.body_2": {
-  "en": "A well-made introduction is not a contact passed along. Both sides are qualified before either is named: mandate, capacity, funds, provenance, title. Each learns of the other only when both have agreed to be known. Nothing is published: no names, no figures, no case studies. Discretion is not a clause here. It is the product.",
-  "it": "Una presentazione ben fatta non è un contatto passato di mano. Entrambe le parti vengono qualificate prima: mandato, capacità, provenienza, titolarità. Ciascuna conosce l'altra solo quando entrambe acconsentono. Nulla viene pubblicato: nessun nome, nessuna cifra, nessun caso di studio. La riservatezza non è una clausola: è il prodotto."
+  "en": "A well-made introduction is not a contact passed along. Discretion is not a clause here. It is the product.",
+  "it": "Una buona introduzione non è un contatto passato di mano. La riservatezza, qui, non è una clausola: è il prodotto."
  },
  "about.stat_1_value": {
   "en": "Independent",
   "it": "Indipendenti"
  },
  "about.stat_1_label": {
-  "en": "No mandate on either side",
-  "it": "Nessun mandato su alcun lato"
+  "en": "No proprietary position in the transaction",
+  "it": "Nessuna posizione propria nell'operazione"
  },
  "about.stat_2_value": {
   "en": "Cross-border",
@@ -208,32 +204,32 @@
   "it": "Materie prime"
  },
  "focus.oil.sublabel": {
-  "en": "Oil",
-  "it": "Petrolio"
+  "en": "Energy",
+  "it": "Energia"
  },
  "focus.oil.body": {
-  "en": "We introduce verified buyers to verified sellers in crude and refined product. Volume, terms and logistics are discussed directly between principals.",
-  "it": "Presentiamo acquirenti verificati a venditori verificati di greggio e prodotti raffinati. Volumi, condizioni e logistica restano fra le parti."
+  "en": "We work across selected crude, refined product and commodity transactions, between buyers and sellers who act as principals. Volume, terms and logistics are agreed directly between them.",
+  "it": "Operiamo su transazioni selezionate di greggio, prodotti raffinati e materie prime, tra acquirenti e venditori che agiscono come principal. Volumi, condizioni e logistica si definiscono direttamente tra loro."
  },
  "focus.oil.detail": {
-  "en": "Most cargo offers in circulation are copies. We work only where a principal sits at each end: a seller with title and capacity, a buyer with funds and a discharge port. Both sides are qualified before either is named, and the terms of the first call are agreed in advance. Vessel nomination, inspection, documents and payment structure remain with the parties and their own advisors.",
-  "it": "Gran parte delle offerte in circolazione sono copie. Lavoriamo solo dove a ciascun estremo vi è un titolare: un venditore con titolo e capacità, un acquirente con disponibilità e porto di sbarco. Entrambe le parti vengono qualificate prima di essere nominate. Nomina della nave, ispezione, documenti e struttura di pagamento restano alle parti e ai loro consulenti."
+  "en": "We act only where a principal sits at each end: a seller with title and capacity, a buyer with the means to perform. Introductions in energy and commodities are subject to counterparty identification and transaction-specific compliance review, covering identity, authority, documentation, commercial terms and, where relevant, banking readiness. Specialist verification, inspection, payment structure and execution remain with the parties, their banks and their own advisers.",
+  "it": "Agiamo solo dove a ciascun capo c'è un principal: un venditore con titolo e capacità, un acquirente con i mezzi per eseguire. Le introduzioni nel settore energia e materie prime sono soggette all'identificazione delle controparti e a una verifica di compliance specifica per l'operazione: identità, poteri, documentazione, condizioni commerciali e, ove pertinente, disponibilità bancaria. Le verifiche specialistiche, le ispezioni, la struttura dei pagamenti e l'esecuzione restano alle parti, alle loro banche e ai loro consulenti."
  },
  "focus.oil.points": {
-  "en": "Buyer and seller matching | Counterparty verification | Cross-border trade routes",
-  "it": "Incontro tra domanda e offerta | Verifica della controparte | Rotte commerciali internazionali"
+  "en": "Principal-to-principal introductions | Counterparty identification | Cross-border trade routes",
+  "it": "Introduzioni tra principal | Identificazione delle controparti | Rotte commerciali internazionali"
  },
  "focus.oil.cta": {
   "en": "Read more",
   "it": "Approfondisci"
  },
  "focus.art.name": {
-  "en": "Art",
+  "en": "Fine Art",
   "it": "Arte"
  },
  "focus.art.sublabel": {
-  "en": "Fine Art",
-  "it": "Opere d'autore"
+  "en": "Private collections",
+  "it": "Collezioni private"
  },
  "focus.art.body": {
   "en": "We connect private collectors, estates and galleries away from the saleroom. Works change hands quietly, with provenance and attribution settled first.",
@@ -244,8 +240,8 @@
   "it": "Un'opera di rilievo raramente viene offerta in pubblico, e chi la possiede raramente cerca. Manteniamo rapporti con collezionisti, famiglie e fondazioni disposti a valutare un approccio privato da una persona che conoscono. I nomi si scambiano solo con il consenso di entrambe le parti. Provenienza, stato di conservazione, attribuzione, esportazione e titolarità restano alle parti e ai loro specialisti."
  },
  "focus.art.points": {
-  "en": "Private sales introductions | Provenance-led discretion | Collector and gallery access",
-  "it": "Presentazioni per vendite private | Riservatezza sulla provenienza | Accesso a collezioni e gallerie"
+  "en": "Private sales introductions | Provenance-led discretion | Collector and foundation access",
+  "it": "Introduzioni per vendite private | Riservatezza fondata sulla provenienza | Accesso a collezionisti e fondazioni"
  },
  "focus.art.cta": {
   "en": "Read more",
@@ -284,8 +280,8 @@
   "it": "La controparte che cerca esiste ed è nota a qualcuno. Ci dica di cosa ha bisogno e in quale mercato. Se abbiamo la relazione, glielo diremo. Se non l'abbiamo, glielo diremo ugualmente."
  },
  "cta.button": {
-  "en": "Speak with us",
-  "it": "Parlare con noi"
+  "en": "Start a confidential conversation",
+  "it": "Avvia una conversazione riservata"
  },
  "contact.eyebrow": {
   "en": "Direct contact",
@@ -316,16 +312,16 @@
   "it": "Con base in"
  },
  "contact.location_value": {
-  "en": "Italy · Operating internationally",
-  "it": "Italia · Operatività internazionale"
+  "en": "Milan · Operating internationally",
+  "it": "Milano · Operatività internazionale"
  },
  "contact.response_note": {
   "en": "Enquiries are read by a named individual, not a queue. A reply normally follows within two business days.",
   "it": "Le richieste sono lette da una persona, non da un servizio. La risposta segue di norma entro due giorni lavorativi."
  },
  "footer.tagline": {
-  "en": "Independent business introducer. Commodities, fine art and natural stone.",
-  "it": "Introduttore d'affari indipendente. Commodities, arte e pietra naturale."
+  "en": "Independent business introductions and advisory. Commodities, fine art and natural stone.",
+  "it": "Introduzioni d'affari e advisory indipendenti. Materie prime, arte e pietra naturale."
  },
  "footer.rights": {
   "en": "© KS Capital Partners. All rights reserved.",
@@ -351,10 +347,6 @@
   "en": "Terms of Use",
   "it": "Condizioni d'uso"
  },
- "legal.disclaimer_notice": {
-  "en": "Template text. These notices are supplied as a working draft and must be reviewed and completed by a qualified legal adviser before publication. Replace KS Capital Partners S.r.l. with the registered name of the legal entity and d.kapo@kscapitalpartners.it with the contact address. KS Capital Partners is responsible for the version it publishes.",
-  "it": "Testo di modello. Le presenti informative sono fornite come bozza di lavoro e devono essere verificate e completate da un consulente legale qualificato prima della pubblicazione. Sostituire KS Capital Partners S.r.l. con la denominazione dell'entità registrata e d.kapo@kscapitalpartners.it con l'indirizzo di contatto. La versione pubblicata resta sotto la responsabilità di KS Capital Partners."
- },
  "legal.privacy_title": {
   "en": "Privacy Notice",
   "it": "Informativa sulla privacy"
@@ -368,16 +360,16 @@
   "it": "Informativa sui cookie"
  },
  "legal.cookie_body": {
-  "en": "This site uses technical cookies only. They are necessary for the pages to load and for the site to stay secure. It stores no preference in your browser: the two language versions are separate pages at separate addresses, and choosing a language records nothing. The technical cookies do not identify you. Neither is used to identify you.\n\nNo profiling cookies are set. No advertising, remarketing or social media cookies are set, and no third-party tracking scripts are embedded in the pages. Because only technical cookies and a language preference are involved, no consent banner is required under Article 122 of the Italian Privacy Code and the Garante's cookie guidelines.\n\nIf measurement tools are added later, this notice will be updated first. Analytics that are not fully anonymised, and any cookie set by a third party, would require prior consent through a banner offering a genuine refusal, and would run only after that consent. Stored preferences can be cleared at any time from your browser settings.",
-  "it": "Questo sito utilizza esclusivamente cookie tecnici, necessari al caricamento delle pagine e alla sicurezza del sito. Non memorizza alcuna preferenza nel browser: le due versioni linguistiche sono pagine distinte, raggiungibili da indirizzi diversi, e la scelta della lingua non comporta alcuna registrazione. I cookie tecnici non servono a identificarla.\n\nNon sono installati cookie di profilazione. Non sono installati cookie pubblicitari, di remarketing o di social network, né script di tracciamento di terze parti. Poiché si utilizzano soltanto cookie tecnici, non è richiesto alcun banner di consenso ai sensi dell'articolo 122 del Codice privacy e delle linee guida del Garante.\n\nQualora venissero introdotti strumenti di misurazione, questa informativa sarà aggiornata prima. Statistiche non integralmente anonimizzate, e qualunque cookie di terza parte, richiederebbero consenso preventivo tramite banner con effettiva possibilità di rifiuto. Le preferenze memorizzate possono essere cancellate dalle impostazioni del browser."
+  "en": "This site sets no cookies and stores nothing in your browser. It uses no analytics, advertising, remarketing or social media tools, and no third-party scripts are embedded in its pages: fonts and images are served from the site itself.\n\nBecause no cookies or similar technologies are used, no consent banner is required under Article 122 of the Italian Privacy Code and the Garante's cookie guidelines.\n\nIf measurement tools are added later, this notice will be updated first. Analytics that are not fully anonymised, and any cookie set by a third party, would require prior consent through a banner offering a genuine refusal, and would run only after that consent.",
+  "it": "Questo sito non installa cookie e non memorizza nulla nel browser. Non utilizza strumenti di statistica, pubblicità, remarketing o social network, e nelle pagine non sono incorporati script di terze parti: caratteri e immagini sono serviti dal sito stesso.\n\nPoiché non si utilizzano cookie né tecnologie analoghe, non è richiesto alcun banner di consenso ai sensi dell'articolo 122 del Codice privacy e delle linee guida del Garante.\n\nQualora venissero introdotti strumenti di misurazione, questa informativa sarà aggiornata prima. Statistiche non integralmente anonimizzate, e qualunque cookie di terza parte, richiederebbero consenso preventivo tramite banner con effettiva possibilità di rifiuto, e verrebbero attivati solo dopo tale consenso."
  },
  "legal.terms_title": {
   "en": "Terms of Use",
   "it": "Condizioni d'uso"
  },
  "legal.terms_body": {
-  "en": "This site is informational. It describes what KS Capital Partners does and how to make contact.\n\nNothing published here is an offer, an invitation or a solicitation to buy or sell any asset, commodity, work or financial instrument, and nothing here constitutes investment, legal, tax or accounting advice. KS Capital Partners is an independent business introducer: it does not invest, does not take positions, does not hold client funds, does not intermediate regulated financial instruments and does not carry on activities reserved to authorised persons.\n\nIntroductions are made only under a separate written agreement setting out scope, fees and confidentiality. No agreement arises from use of this site or from correspondence sent by email, and no obligation arises until both parties sign.\n\nDescriptions of markets, regions and materials are general and may change without notice. External links, where present, are outside our control. Italian law applies to the use of this site.",
-  "it": "Questo sito ha finalità informativa. Descrive l'attività di KS Capital Partners e come contattarla.\n\nNulla di quanto pubblicato costituisce offerta, invito o sollecitazione all'acquisto o alla vendita di beni, materie prime, opere o strumenti finanziari, né consulenza in materia di investimenti, legale, fiscale o contabile. KS Capital Partners è un introduttore d'affari indipendente: non investe, non assume posizioni, non detiene fondi di terzi, non intermedia strumenti finanziari regolamentati e non svolge attività riservate a soggetti autorizzati.\n\nLe presentazioni avvengono unicamente in forza di un accordo scritto separato che ne definisce oggetto, corrispettivi e riservatezza. Dall'uso del sito o dalla corrispondenza inviata per email non deriva alcun accordo e nessun obbligo sorge prima della sottoscrizione.\n\nLe descrizioni di mercati, aree e materiali hanno carattere generale e possono variare senza preavviso. I collegamenti esterni non sono sotto il nostro controllo. All'uso del sito si applica la legge italiana."
+  "en": "This site is informational. It describes what KS Capital Partners does and how to make contact.\n\nNothing published here is an offer, an invitation or a solicitation to buy or sell any asset, commodity, work or financial instrument, and nothing here constitutes investment, legal, tax or accounting advice.\n\nKS Capital Partners S.r.l. is an independent business introduction and advisory firm incorporated in Italy. Its advisory work is commercial in nature: business advice and transaction support within the scope of a specific engagement. It does not receive or hold client funds, does not manage capital, does not intermediate financial instruments, does not provide regulated financial services and does not carry on activities reserved to authorised persons.\n\nKS Capital Partners may act under specific mandates, authorisations or engagement arrangements, while remaining independent from the underlying transaction. It does not take ownership of the assets introduced and does not act as principal unless expressly agreed otherwise.\n\nIntroductions and any related advisory work are carried out only under a separate written agreement setting out scope, fees and confidentiality. No agreement arises from use of this site or from correspondence sent by email, and no obligation arises until both parties sign.\n\nDescriptions of markets, regions and materials are general and may change without notice. External links, where present, are outside our control. Italian law applies to the use of this site.",
+  "it": "Questo sito ha finalità informativa. Descrive l'attività di KS Capital Partners e come contattarla.\n\nNulla di quanto pubblicato costituisce offerta, invito o sollecitazione all'acquisto o alla vendita di beni, materie prime, opere o strumenti finanziari, né consulenza in materia di investimenti, legale, fiscale o contabile.\n\nKS Capital Partners S.r.l. è una società indipendente di introduzione d'affari e advisory costituita in Italia. L'attività di advisory ha natura commerciale: consulenza d'impresa e supporto alle operazioni nei limiti di uno specifico incarico. Non riceve né detiene fondi dei clienti, non gestisce capitali, non intermedia strumenti finanziari, non presta servizi finanziari regolamentati e non svolge attività riservate a soggetti autorizzati.\n\nKS Capital Partners può operare sulla base di mandati, autorizzazioni o incarichi specifici, restando indipendente rispetto all'operazione sottostante. Non acquisisce la proprietà dei beni presentati e non agisce in qualità di principal, salvo diverso accordo espresso.\n\nLe introduzioni e l'eventuale attività di advisory collegata avvengono unicamente in forza di un accordo scritto separato che ne definisce oggetto, corrispettivi e riservatezza. Dall'uso del sito o dalla corrispondenza inviata per email non deriva alcun accordo e nessun obbligo sorge prima della sottoscrizione.\n\nLe descrizioni di mercati, aree e materiali hanno carattere generale e possono variare senza preavviso. I collegamenti esterni non sono sotto il nostro controllo. All'uso del sito si applica la legge italiana."
  },
  "contact.phone_label": {
   "it": "Telefono",
@@ -406,5 +398,29 @@
  "company.pec": {
   "it": "PEC",
   "en": "Certified email"
+ },
+ "values.heading": {
+  "en": "Principles",
+  "it": "Principi"
+ },
+ "compliance.eyebrow": {
+  "en": "Compliance & Integrity",
+  "it": "Compliance e integrità"
+ },
+ "compliance.title": {
+  "en": "Discretion does not replace verification.",
+  "it": "La riservatezza non sostituisce le verifiche."
+ },
+ "compliance.body": {
+  "en": "Selected introductions are subject to proportionate counterparty and transaction review. Depending on the nature of the engagement, this may include identity and corporate verification, sanctions screening, authority checks and review of transaction documentation.",
+  "it": "Le introduzioni selezionate sono soggette a una verifica proporzionata della controparte e dell'operazione. A seconda della natura dell'incarico, può comprendere la verifica dell'identità e della società, il controllo delle liste sanzionatorie, l'accertamento dei poteri e l'esame della documentazione dell'operazione."
+ },
+ "compliance.note": {
+  "en": "Specialist legal, banking, tax and regulatory matters remain with the relevant professional advisers and institutions.",
+  "it": "Le questioni specialistiche di natura legale, bancaria, fiscale e regolamentare restano di competenza dei professionisti e delle istituzioni preposte."
+ },
+ "footer.statement": {
+  "en": "KS Capital Partners S.r.l. is an independent business introduction and advisory firm incorporated in Italy. KS Capital Partners does not receive or hold client funds and does not provide regulated financial services.",
+  "it": "KS Capital Partners S.r.l. è una società indipendente di introduzione d'affari e advisory costituita in Italia. KS Capital Partners non riceve né detiene fondi dei clienti e non presta servizi finanziari regolamentati."
  }
 }

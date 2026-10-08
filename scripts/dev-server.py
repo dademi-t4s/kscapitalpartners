@@ -213,7 +213,6 @@ class Server(socketserver.ThreadingTCPServer):
 if __name__ == "__main__":
     with Server(("127.0.0.1", PORT), Handler) as srv:
         print(f"\n  KS Capital Partners — anteprima\n"
-              f"  IT  http://localhost:{PORT}/\n"
-              f"  EN  http://localhost:{PORT}/en/\n"
+              f"  http://localhost:{PORT}/\n"
               f"  Ricarica automatica attiva. Ctrl+C per fermare.\n", flush=True)
         srv.serve_forever()

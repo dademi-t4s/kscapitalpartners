@@ -3,12 +3,14 @@
 #  KS Capital Partners — generatore immagini (OpenAI gpt-image-2)
 #
 #  Uso:
-#     ./scripts/generate-images.sh            # genera solo le immagini mancanti
-#     ./scripts/generate-images.sh --force    # rigenera tutto
-#     ./scripts/generate-images.sh hero oil   # genera solo gli slot indicati
+#     ./scripts/generate-images.sh                     # genera solo le mancanti
+#     ./scripts/generate-images.sh --force             # rigenera tutto
+#     ./scripts/generate-images.sh --force about       # rigenera solo gli slot indicati
 #
 #  Richiede OPENAI_API_KEY nell'ambiente, oppure in un file .env accanto allo
-#  script. Le immagini finiscono in assets/img/ con il nome dello slot.
+#  script. L'originale finisce in assets/img/_raw/<slot>.png; quello che c'era
+#  prima si sposta in _raw/_precedenti/ con data e ora, così nulla va perso.
+#  Alla fine optimize-images.sh produce le versioni per il web.
 # ---------------------------------------------------------------------------
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -34,7 +36,7 @@ done
 
 MODEL="${IMAGE_MODEL:-gpt-image-2}"
 QUALITY="${IMAGE_QUALITY:-high}"
-mkdir -p assets/img
+mkdir -p assets/img/_raw/_precedenti
 
 python3 - "$MODEL" "$QUALITY" "$FORCE" "${SLOTS[@]:-}" <<'PY'
 import base64, json, os, sys, time, urllib.request, urllib.error
@@ -71,10 +73,10 @@ for slot, spec in prompts.items():
         continue
     if only and slot not in only:
         continue
-    out = f"assets/img/{slot}.png"
-    # optimize-images.sh cancella il PNG dopo la conversione: senza questo
-    # controllo ogni run rigenererebbe tutto, bruciando credito inutilmente.
-    done = any(os.path.exists(f"assets/img/{slot}.{e}") for e in ("png", "jpg", "webp"))
+    raw = f"assets/img/_raw/{slot}.png"
+    # Basta l'originale o la versione web già pubblicata: senza questo
+    # controllo un clone nuovo rigenererebbe tutto, bruciando credito.
+    done = os.path.exists(raw) or os.path.exists(f"assets/img/{slot}.jpg")
     if done and not force:
         print(f"  ·  {slot:<14} già presente, salto")
         skipped += 1
@@ -82,8 +84,12 @@ for slot, spec in prompts.items():
     print(f"  →  {slot:<14} {spec['size']}  generazione…", flush=True)
     for attempt in range(1, 4):
         try:
-            open(out, "wb").write(generate(slot, spec))
-            print(f"  ✓  {slot:<14} {os.path.getsize(out)//1024} KB → {out}")
+            png = generate(slot, spec)
+            if os.path.exists(raw):
+                stamp = time.strftime("%Y%m%d-%H%M%S")
+                os.replace(raw, f"assets/img/_raw/_precedenti/{slot}-{stamp}.png")
+            open(raw, "wb").write(png)
+            print(f"  ✓  {slot:<14} {len(png)//1024} KB → {raw}")
             ok += 1
             break
         except urllib.error.HTTPError as e:
@@ -102,6 +108,8 @@ for slot, spec in prompts.items():
 print(f"\n  Fatte {ok} · saltate {skipped} · fallite {failed}")
 PY
 
-echo
-echo "  Ora converto in WebP/AVIF per il web…"
-./scripts/optimize-images.sh
+if [[ "${NO_OPTIMIZE:-0}" != "1" ]]; then
+  echo
+  echo "  Ora preparo le versioni per il web…"
+  ./scripts/optimize-images.sh
+fi

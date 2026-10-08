@@ -20,13 +20,17 @@
       items.forEach(function (el) { el.classList.add('is-in'); });
       return;
     }
+    // Sul telefono si rivela appena l'elemento entra: con il margine del
+    // desktop un blocco restava vuoto in fondo allo schermo, e il passo "01"
+    // del metodo compariva isolato dopo un grande spazio nero.
+    var small = window.matchMedia('(max-width: 960px)').matches;
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
         entry.target.classList.add('is-in');
         io.unobserve(entry.target);
       });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    }, { rootMargin: small ? '0px 0px -2% 0px' : '0px 0px -12% 0px', threshold: small ? 0 : 0.08 });
     items.forEach(function (el) { io.observe(el); });
 
     // Rete di sicurezza: quanto è già nella finestra si mostra subito, senza
@@ -285,30 +289,6 @@
     });
   }
 
-  /* --- Parallasse leggera sui fondali ------------------------------------ */
-  function initParallax() {
-    if (reduced.matches) return;
-    var layers = all('[data-parallax]');
-    if (!layers.length) return;
-    var ticking = false;
-    function update() {
-      var vh = window.innerHeight;
-      layers.forEach(function (el) {
-        var r = el.getBoundingClientRect();
-        if (r.bottom < -200 || r.top > vh + 200) return;
-        var progress = (r.top + r.height / 2 - vh / 2) / vh;
-        var depth = parseFloat(el.getAttribute('data-parallax')) || 0.12;
-        el.style.setProperty('--py', (-progress * depth * 100).toFixed(2) + 'px');
-      });
-      ticking = false;
-    }
-    on(window, 'scroll', function () {
-      if (!ticking) { ticking = true; requestAnimationFrame(update); }
-    }, { passive: true });
-    on(window, 'resize', update, { passive: true });
-    update();
-  }
-
   /* --- Luce radente sul titolo dell'hero ---------------------------------
      Parte quando le righe hanno finito di salire, e al termine il titolo
      torna a colore pieno: nessun testo trasparente residuo. */
@@ -344,7 +324,7 @@
   function init() {
     initReveal(); initHeroTitle(); initRake(); initRail(); initHeader(); initProgress();
     initDrawer(); initSectors(); initScrollSpy(); initSpotlight();
-    initCopy(); initParallax();
+    initCopy();
   }
 
   window.__ksReady = true;

@@ -471,6 +471,9 @@ html.js.has-pointer .spotlight { opacity: 1; }
   width: 100%; height: 100%;
   object-fit: cover; object-position: var(--focal, center);
 }
+/* <picture> sceglie solo il file: non deve generare un box suo, altrimenti
+   l'immagine si posizionerebbe rispetto a lui e non al riquadro. */
+.figure picture { display: contents; }
 .figure__scrim {
   position: absolute; inset: 0; z-index: 2; pointer-events: none;
   background: linear-gradient(to top, rgba(8,8,10,.92) 0%, rgba(8,8,10,.35) 42%, transparent 78%);
@@ -636,6 +639,9 @@ html.js.has-pointer .spotlight { opacity: 1; }
 .sectors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 
 .sector { position: relative; background: var(--bg-2); }
+/* Il titolo h3 avvolge il pulsante solo per la struttura del documento:
+   non deve portare con sé il carattere e la misura dei titoli. */
+.sector__heading { font: inherit; letter-spacing: inherit; text-wrap: wrap; }
 .sector__toggle {
   display: block; width: 100%; text-align: left;
   position: relative; overflow: hidden;
@@ -648,6 +654,11 @@ html.js.has-pointer .spotlight { opacity: 1; }
 }
 .sector__toggle:hover .sector__media,
 .sector__toggle:focus-visible .sector__media { transform: scale(1.07); filter: saturate(1) brightness(1.04); }
+/* La stanza del collezionista è la più scura delle tre: un filo di luce in più
+   la mette alla pari con le altre schede. */
+.sector__media.art--art { filter: saturate(.92) brightness(1.08); }
+.sector__toggle:hover .sector__media.art--art,
+.sector__toggle:focus-visible .sector__media.art--art { filter: saturate(1) brightness(1.18); }
 .sector__toggle::after {                     /* velo per la leggibilità del testo */
   content: ""; position: absolute; inset: 0; z-index: 1;
   /* La fascia alta resta scura: ci poggiano nome e sommario. Il centro si apre,
@@ -746,6 +757,7 @@ html.js.has-pointer .spotlight { opacity: 1; }
   position: sticky; top: calc(var(--header-h) + 2.5rem);
 }
 .about__title { margin-top: var(--s-4); max-width: 15ch; }
+.about__col .rule { margin-top: var(--s-5); }
 .about__lead { margin-block: var(--s-5) var(--s-5); max-width: 48ch; }
 .quote {
   margin-top: var(--s-6);
@@ -779,6 +791,7 @@ html.js.has-pointer .spotlight { opacity: 1; }
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   align-items: end;
 }
+.approach__head h2 { margin-top: var(--s-4); }
 .approach__intro { max-width: 46ch; padding-bottom: .4rem; }
 .steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); }
 .step {
@@ -803,17 +816,28 @@ html.js.has-pointer .spotlight { opacity: 1; }
 .step:hover .step__num { color: var(--gold); }
 .step__name { font-size: var(--t-h3); margin-bottom: var(--s-3); }
 .step__text { font-size: var(--t-small); line-height: 1.8; max-width: 42ch; }
-.approach__note {
-  margin-top: var(--s-6); font-size: var(--t-small);
-  padding-top: var(--s-5); border-top: 1px solid var(--line);
+/* Compliance e integrità: la coda del metodo, non una pagina legale. Stessa
+   griglia della testata della sezione, un filo d'oro sopra, nessun riquadro. */
+.integrity {
+  display: grid; gap: var(--s-5) var(--s-8);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: start;
+  margin-top: clamp(3rem, 2rem + 3vw, 5rem);
+  padding-top: clamp(2rem, 1.5rem + 2vw, 3rem);
+  border-top: 1px solid var(--line-gold);
 }
+.integrity__title { margin-top: var(--s-4); max-width: 20ch; }
+.integrity__body .prose { max-width: 52ch; }
+.integrity__note { margin-top: var(--s-4); font-size: var(--t-small); line-height: 1.8; max-width: 52ch; }
 
 /* --- Rete -------------------------------------------------------------- */
 .network { overflow: hidden; isolation: isolate; }
+/* La scala è un'immagine figurativa e passa sotto l'elenco delle controparti:
+   a .30 la ringhiera resta leggibile come atmosfera e il testo come testo
+   (il chiaro più forte dei gradini dà 5,4:1 col grigio delle voci). */
 .network__bg {
-  position: absolute; inset: -10% 0; z-index: -1;
-  opacity: .45;
-  transform: translate3d(0, var(--py, 0px), 0);
+  position: absolute; inset: 0; z-index: -1;
+  opacity: .3;
   -webkit-mask-image: radial-gradient(120% 90% at 78% 50%, #000 30%, transparent 78%);
           mask-image: radial-gradient(120% 90% at 78% 50%, #000 30%, transparent 78%);
 }
@@ -862,15 +886,18 @@ html.js.has-pointer .spotlight { opacity: 1; }
   content: ""; position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(100deg, rgba(8,8,10,.93) 0%, rgba(8,8,10,.62) 44%, rgba(8,8,10,.30) 100%);
 }
+/* La frase di chiusura tiene una colonna larga, su due righe; testo e pulsante
+   stanno uno sopra l'altro nella seconda, così l'etichetta lunga del pulsante
+   non toglie spazio al titolo. */
 .cta__inner {
   position: relative; z-index: 2;
-  display: grid; gap: clamp(1.5rem, 3vw, 3.5rem);
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr) auto;
+  display: grid; gap: var(--s-5) clamp(1.5rem, 4vw, 4.5rem);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   align-items: center;
 }
-.cta__title { font-size: var(--t-h2); max-width: 24ch; }
-.cta__body { font-size: var(--t-small); line-height: 1.8; max-width: 40ch; }
-.cta__btn { justify-self: end; white-space: nowrap; }
+.cta__title { font-size: var(--t-h2); max-width: 24ch; grid-row: span 2; }
+.cta__body { font-size: var(--t-small); line-height: 1.8; max-width: 44ch; align-self: end; }
+.cta__btn { justify-self: start; align-self: start; white-space: nowrap; }
 
 /* --- Contatti ---------------------------------------------------------- */
 .contact__grid {
@@ -980,6 +1007,8 @@ html.js.has-pointer .spotlight { opacity: 1; }
   .pillars { grid-template-columns: repeat(2, 1fr); row-gap: clamp(2.5rem, 5vw, 3.5rem); }
   .pillar:nth-child(3)::before { display: none; }
   .cta__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .cta__title { grid-row: auto; }
+  .cta__body { align-self: center; }
   .cta__btn { grid-column: 1 / -1; justify-self: start; }
   .footer__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .footer__brand { grid-column: 1 / -1; }
@@ -997,9 +1026,16 @@ html.js.has-pointer .spotlight { opacity: 1; }
   .sector__body { min-height: 320px; }
   .sector__text { opacity: 1; transform: none; max-width: 46ch; }
 
-  .about__grid, .network__grid, .contact__grid { grid-template-columns: 1fr; }
-  .about__media { position: static; aspect-ratio: 16 / 10; }
+  .about__grid, .network__grid, .contact__grid, .integrity { grid-template-columns: 1fr; }
+  /* relative, non static: l'immagine dentro è in posizione assoluta e deve
+     avere il riquadro come riferimento. Con static il riferimento diventava
+     l'intera sezione: finché durava la rivelazione transform e will-change
+     tenevano la foto al suo posto, poi a rivelazione finita si allargava di
+     colpo a tutto schermo e a tutta l'altezza della sezione, tagliata. */
+  .about__media { position: relative; top: auto; aspect-ratio: 16 / 10; }
   .steps { grid-template-columns: 1fr; }
+  /* Fra l'introduzione del metodo e il passo 01 basta un respiro, non mezzo schermo. */
+  .approach__head { margin-bottom: var(--s-7); }
   .network__lists { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -1019,9 +1055,24 @@ html.js.has-pointer .spotlight { opacity: 1; }
   .network__lists { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr; }
   .hero__actions .btn { flex: 1 1 100%; }
+  /* Pulsanti a tutta larghezza: l'etichetta lunga ("Start a confidential
+     conversation") deve stare su una riga dove può, e andare a capo centrata
+     e bilanciata dove non può. La freccia, che sul telefono non ha un hover
+     da annunciare, lascia spazio al testo. */
+  .btn {
+    white-space: normal; text-align: center; text-wrap: balance;
+    line-height: 1.5; padding-inline: 1.25rem; letter-spacing: .16em;
+  }
+  .btn__arrow { display: none; }
+  .cta__btn { justify-self: stretch; white-space: normal; }
+  .contact__cta .btn { width: 100%; }
   .hero__scroll { display: none; }
   .cta__inner { grid-template-columns: 1fr; }
-  .step { flex-direction: column; gap: var(--s-4); }
+  /* I passi diventano un elenco a filo del testo, separato da righe sottili:
+     niente riquadri rientrati che spostano "01" lontano dal titolo. */
+  .steps { border-top: 1px solid var(--line); }
+  .step { flex-direction: column; gap: var(--s-3); padding: var(--s-6) 0; }
+  .approach__head { margin-bottom: var(--s-6); }
   .legal__toc ul { flex-direction: column; gap: var(--s-3); }
   .legal__toc a { display: inline-block; }
 }
@@ -1194,6 +1245,10 @@ html.js .rail { display: flex; }
   color: var(--fg-dim);
 }
 .footer__legalinfo b { color: var(--fg-mute); font-weight: 400; }
+.footer__legalinfo .footer__statement {
+  display: block; margin-top: var(--s-3);
+  max-width: 96ch; line-height: 1.7;
+}
 .footer__legalinfo a {
   color: inherit;
   border-bottom: 1px solid var(--line);
@@ -1213,13 +1268,42 @@ html.js .rail { display: flex; }
 }
 .contact__phone:hover { color: var(--gold); background-size: 100% 1px; }
 
-/* --- Fotografia della sezione "About" -----------------------------------
-   Arriva dal cliente ed è più fredda e contrastata delle altre del sito.
-   Un filo di calore e un contrasto più morbido la fanno sedere accanto alle
-   altre senza rigenerarla. Il punto focale è alzato perché nel ritaglio
-   orizzontale del mobile restino i volti e la stretta di mano.
+/* --- Telefono: immagini ferme, testata ferma -----------------------------
+   Sotto i 960px nessuna immagine cambia misura, taglio o scala mentre si
+   scorre: niente zoom lento sulla hero, niente rivelazione in scala, niente
+   sfondo che si allunga su tutta l'altezza della sezione. Lo sfondo della
+   rete diventa una fotografia incorniciata, con gli stessi margini e lo
+   stesso rapporto di quella di "Who we are". Il desktop tiene i suoi effetti.
    ---------------------------------------------------------------------- */
-.about__media img {
-  --focal: 50% 45%;
-  filter: saturate(.9) sepia(.12) contrast(1.03) brightness(.96);
+@media (max-width: 960px) {
+  .kenburns { animation: none; }
+  html.js [data-reveal="scale"] { transform: none; }
+  html.js [data-reveal="left"] { transform: translate3d(-12px, 0, 0); }
+  .network__bg {
+    position: relative; inset: auto; z-index: auto;
+    aspect-ratio: 16 / 10;
+    margin: 0 var(--gutter) clamp(2.5rem, 5vw, 5.5rem);
+    opacity: 1;
+    -webkit-mask-image: none; mask-image: none;
+  }
+
+  /* Altezza e logo costanti: la testata non si restringe e non scompare,
+     così niente sobbalzi mentre la barra di Safari entra ed esce. */
+  .header,
+  .header.is-stuck { height: calc(var(--header-h) + env(safe-area-inset-top, 0px)); }
+  .header { padding-top: env(safe-area-inset-top, 0px); }
+  .header.is-stuck .logo__mark { width: 38px; }
+  .header.is-hidden { transform: none; }
+
+  /* La grana fissa in fusione su tutta la pagina costa fotogrammi in
+     scorrimento, e su uno schermo piccolo non si vede. */
+  .grain { display: none; }
+}
+@supports (padding: max(0px)) {
+  @media (max-width: 960px) {
+    .network__bg {
+      margin-left: max(var(--gutter), env(safe-area-inset-left));
+      margin-right: max(var(--gutter), env(safe-area-inset-right));
+    }
+  }
 }

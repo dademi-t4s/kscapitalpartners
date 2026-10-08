@@ -1,67 +1,85 @@
 #!/usr/bin/env bash
 # ---------------------------------------------------------------------------
-#  Ottimizza i PNG generati in assets/img/ per il web.
-#  Ridimensiona alla larghezza di visualizzazione ×2 e produce JPEG di qualità,
-#  più WebP se sul sistema è disponibile cwebp. Gli originali restano in
-#  assets/img/_raw/ così puoi rigenerare senza richiamare l'API.
+#  Prepara le fotografie per il web, partendo dagli originali in
+#  assets/img/_raw/. Si può rilanciare quante volte si vuole: non chiama l'API.
+#
+#  Per ogni slot produce, in due larghezze, JPEG (per tutti), WebP e AVIF (per
+#  i browser che li leggono, cioè quasi tutti): <slot>.<ext> è la versione
+#  grande, <slot>-<larghezza>.<ext> quella ridotta. build.py le trova da sé e
+#  scrive srcset e <picture>.
+#
+#  Richiede cwebp e avifenc:  brew install webp libavif
+#  Senza, produce solo i JPEG, che restano perfettamente validi.
 # ---------------------------------------------------------------------------
 set -euo pipefail
 cd "$(dirname "$0")/.."
-mkdir -p assets/img/_raw
 
-# slot:larghezza_massima_px
-# Larghezza massima servita. Mai superiore alla nativa: ingrandire un'immagine
-# generata non aggiunge dettaglio, aggiunge solo peso.
-# slot : larghezza massima : qualità JPEG
+# uscita : originale : larghezze : qualità JPEG : ritaglio (AxL+y+x, oppure -)
+#
 # La qualità segue quanto l'immagine è davvero visibile: la hero è a piena
-# vista, il fondale della rete sta al 45% di opacità sotto una maschera e la
-# texture dell'invito è coperta da un velo quasi opaco. Spendere byte lì è
-# spreco puro.
+# vista, la texture dell'invito è coperta da un velo quasi opaco.
+# La sala riunioni dà due ritagli dallo stesso originale 1024x1536: 4:5 per
+# la colonna del desktop, 16:10 per i telefoni, entrambi con le due figure
+# accanto alla finestra.
 TARGETS=(
-  "hero:1536:78"
-  "focus-oil:1024:70" "focus-art:1024:70" "focus-stone:1024:68"
-  "about:1400:74" "network:1200:62" "cta-texture:1200:58"
+  "hero:hero:1536,768:78:-"
+  "focus-oil:focus-oil:1024,512:70:-"
+  "focus-art:focus-art:1024,512:72:-"
+  "focus-stone:focus-stone:1024,512:68:-"
+  "about:about:1024,640:76:1280x1024+64+0"
+  "about-m:about:1024,640:76:640x1024+300+0"
+  "network:network:1536,768:70:-"
+  "cta-texture:cta-texture:1200,800:58:-"
 )
 
-have_webp=0; command -v cwebp >/dev/null 2>&1 && have_webp=1
+have_webp=0; command -v cwebp   >/dev/null 2>&1 && have_webp=1
+have_avif=0; command -v avifenc >/dev/null 2>&1 && have_avif=1
+tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
 
 for entry in "${TARGETS[@]}"; do
-  IFS=':' read -r slot width quality <<< "$entry"
-  src="assets/img/${slot}.png"
-  raw="assets/img/_raw/${slot}.png"
+  IFS=':' read -r out raw widths quality crop <<< "$entry"
+  src="assets/img/_raw/${raw}.png"
+  [[ -f "$src" ]] || { echo "  ·  ${out}: manca ${src}, salto"; continue; }
 
-  # Il PNG appena generato, se c'è, viene archiviato in _raw. Se non c'è si
-  # riparte dall'originale già archiviato: così si può ricomprimere quante
-  # volte si vuole senza richiamare l'API.
-  if [[ -f "$src" ]]; then
-    cp -n "$src" "$raw" 2>/dev/null || true
-  fi
-  [[ -f "$raw" ]] || continue
-
-    # -Z ingrandirebbe se l'originale fosse più piccolo: si ridimensiona solo al ribasso
-  native=$(sips -g pixelWidth "$raw" | awk '/pixelWidth/{print $2}')
-  if [[ "$native" -gt "$width" ]]; then
-    # --resampleWidth agisce sulla larghezza: -Z guarderebbe il lato maggiore
-    # e schiaccerebbe le immagini verticali.
-    sips --resampleWidth "$width" "$raw" --out "/tmp/ks-${slot}.png" >/dev/null 2>&1
+  base="$tmp/${out}.png"
+  if [[ "$crop" != "-" ]]; then
+    [[ "$crop" =~ ^([0-9]+)x([0-9]+)\+([0-9]+)\+([0-9]+)$ ]]
+    sips -c "${BASH_REMATCH[1]}" "${BASH_REMATCH[2]}" \
+         --cropOffset "${BASH_REMATCH[3]}" "${BASH_REMATCH[4]}" "$src" --out "$base" >/dev/null
   else
-    cp "$raw" "/tmp/ks-${slot}.png"
+    cp "$src" "$base"
   fi
-  sips -s format jpeg -s formatOptions "$quality" "/tmp/ks-${slot}.png" \
-       --out "assets/img/${slot}.jpg" >/dev/null 2>&1
-  size=$(du -k "assets/img/${slot}.jpg" | cut -f1)
-  line="  ✓ ${slot}.jpg  ${width}px  q${quality}  ${size}KB"
+  native=$(sips -g pixelWidth "$base" | awk '/pixelWidth/{print $2}')
 
-  if [[ $have_webp -eq 1 ]]; then
-    cwebp -quiet -q "$quality" "/tmp/ks-${slot}.png" -o "assets/img/${slot}.webp"
-    line+="  ·  $(du -k "assets/img/${slot}.webp" | cut -f1)KB webp"
-  fi
-  rm -f "/tmp/ks-${slot}.png" "$src"
-  echo "$line"
+  # Vecchie versioni dello slot: le larghezze possono essere cambiate.
+  rm -f "assets/img/${out}".{jpg,webp,avif} assets/img/"${out}"-[0-9]*.{jpg,webp,avif}
+
+  line="  ✓ ${out}"
+  first=1
+  for w in ${widths//,/ }; do
+    # Mai ingrandire: un'immagine generata allargata non guadagna dettaglio.
+    (( w > native )) && w=$native
+    name="assets/img/${out}"; (( first )) || name+="-${w}"
+    img="$tmp/${out}-${w}.png"
+    if (( w < native )); then
+      # --resampleWidth agisce sulla larghezza: -Z guarderebbe il lato maggiore
+      # e schiaccerebbe le immagini verticali.
+      sips --resampleWidth "$w" "$base" --out "$img" >/dev/null
+    else
+      cp "$base" "$img"
+    fi
+    sips -s format jpeg -s formatOptions "$quality" "$img" --out "${name}.jpg" >/dev/null
+    (( have_webp )) && cwebp -quiet -q $(( quality + 8 )) -m 6 -af -sharp_yuv "$img" -o "${name}.webp"
+    (( have_avif )) && avifenc -q $(( quality - 4 )) -s 6 -y 420 "$img" "${name}.avif" >/dev/null
+    kb() { [[ -f "$1" ]] && echo "$(( $(stat -f%z "$1") / 1024 ))" || echo "-"; }
+    line+="  ${w}px $(kb "${name}.jpg")/$(kb "${name}.webp")/$(kb "${name}.avif") KB"
+    first=0
+  done
+  echo "$line   (jpg/webp/avif)"
 done
 
-if [[ $have_webp -eq 0 ]]; then
+if (( ! have_webp || ! have_avif )); then
   echo
-  echo "  ℹ  cwebp non installato: generati solo JPEG (perfettamente validi)."
-  echo "     Per avere anche i WebP, più leggeri: brew install webp && ./scripts/optimize-images.sh"
+  echo "  ℹ  cwebp o avifenc mancanti: generati solo i formati disponibili."
+  echo "     brew install webp libavif && ./scripts/optimize-images.sh"
 fi

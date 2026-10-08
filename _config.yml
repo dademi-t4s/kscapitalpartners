@@ -1,0 +1,10 @@
+# GitHub Pages pubblica solo il sito. Documenti interni e strumenti restano
+# nel repository ma non sul dominio: senza questo elenco chiunque poteva
+# aprire kscapitalpartners.it/INFO-CLIENTE.md o /scripts/build.py.
+# Le pagine non hanno front matter, quindi Jekyll le copia così come sono.
+exclude:
+  - README.md
+  - PUBBLICAZIONE.md
+  - INFO-CLIENTE.md
+  - aggiorna.sh
+  - scripts/

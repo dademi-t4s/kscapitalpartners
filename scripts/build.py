@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Genera le pagine statiche di KS Capital Partners in italiano e inglese.
+"""Genera le pagine statiche di KS Capital Partners.
 
     python3 scripts/build.py
 
-Legge scripts/copy.json (una voce per chiave, con testo 'it' ed 'en') e scrive
-index.html, en/index.html e le pagine legali. Le pagine prodotte sono HTML
-statico puro: nessun runtime, nessuna dipendenza.
+Legge scripts/copy.json (una voce per chiave, con testo 'en' e 'it') e scrive
+index.html, legal.html, 404.html e i file accessori. Il sito pubblicato è in
+inglese. Le pagine prodotte sono HTML statico puro: nessun runtime, nessuna
+dipendenza.
 """
 import json, os, pathlib, re, html
 
@@ -84,6 +85,7 @@ UI = {
     "close_panel": {"it": "Chiudi scheda",             "en": "Close panel"},
     "sector":      {"it": "Settore",                   "en": "Sector"},
     "back_home":   {"it": "Torna alla home",           "en": "Back to home"},
+    "to_top":      {"it": "Torna su",                  "en": "Back to top"},
     "legal_title": {"it": "Note legali",               "en": "Legal"},
     "rail":        {"it": "Indice delle sezioni",      "en": "Section index"},
 }
@@ -112,9 +114,10 @@ ICONS = {
     "discretion": '<rect x="6.5" y="14" width="19" height="14" rx="1.6"/>'
                   '<path d="M10.4 14V9.8a5.6 5.6 0 0 1 11.2 0V14"/><circle cx="16" cy="20.4" r="1.5"/>'
                   '<path d="M16 21.9v2.6"/>',
-    "trust": '<path d="M2.5 17.4l5-5.2 4.6 4.1 3.9-3.6 3.9 3.6 4.6-4.1 5 5.2"/>'
-             '<path d="M12.1 16.3l-3 3a2 2 0 0 0 2.9 2.8l.6-.6.9.9a2 2 0 0 0 2.9-2.8"/>'
-             '<path d="M16.5 19.6l2.3 2.3a2 2 0 0 0 2.9-2.8l-2.3-2.3"/>',
+    # Indipendenza: una bussola, la propria rotta. La stretta di mano che
+    # c'era prima è il cliché che il marchio vuole evitare.
+    "trust": '<circle cx="16" cy="16" r="12.5"/><path d="M16 6.6l2.9 9.4-2.9 9.4-2.9-9.4z"/>'
+             '<circle cx="16" cy="16" r="1.1"/>',
     "results": '<circle cx="16" cy="16" r="12.5"/><circle cx="16" cy="16" r="7.4"/>'
                '<circle cx="16" cy="16" r="2.2"/><path d="M16 3.5v3.4M16 25.1v3.4M3.5 16h3.4M25.1 16h3.4"/>',
 }
@@ -164,25 +167,61 @@ def image_size(path):
     return None
 
 
-def photo(lang, slot, priority=False, css_class=""):
-    """Restituisce il tag <img> solo se il file esiste: finché manca, resta
-    visibile il fondale procedurale e il layout non cambia di una riga."""
-    for ext in ("webp", "jpg", "png"):
-        rel = f"assets/img/{slot}.{ext}"
-        if (ROOT / rel).exists():
-            size = image_size(ROOT / rel)
-            if not size:
-                return ""
-            w, h = size
-            cls = f' class="{css_class}"' if css_class else ""
-            attrs = (f'src="{asset(lang, rel)}" width="{w}" height="{h}" '
-                     f'alt="" decoding="async"{cls}') 
-            if priority:
-                attrs += ' fetchpriority="high"'
-            else:
-                attrs += ' loading="lazy"'
-            return f"<img {attrs}>"
-    return ""
+# Larghezza con cui ciascuna immagine compare a schermo: il browser la usa per
+# scegliere dal srcset la versione più piccola che resta nitida.
+SIZES = {
+    "hero":        "100vw",
+    "focus-oil":   "(max-width: 960px) 100vw, 34vw",
+    "focus-art":   "(max-width: 960px) 100vw, 34vw",
+    "focus-stone": "(max-width: 960px) 100vw, 34vw",
+    "about":       "(min-width: 1400px) 560px, 40vw",
+    "about-m":     "100vw",
+    "network":     "100vw",
+    "cta-texture": "(min-width: 1340px) 1340px, 100vw",
+}
+FORMATS = (("avif", "image/avif"), ("webp", "image/webp"))
+
+
+def srcset(lang, slot, ext, main_w):
+    """Le versioni di uno slot in un formato, dalla più piccola: <slot>.<ext> è
+    la più grande, <slot>-<larghezza>.<ext> le ridotte."""
+    found = []
+    for p in (ROOT / "assets" / "img").glob(f"{slot}-*.{ext}"):
+        m = re.fullmatch(re.escape(slot) + r"-(\d+)\." + ext, p.name)
+        if m:
+            found.append((int(m.group(1)), p.name))
+    if (ROOT / "assets" / "img" / f"{slot}.{ext}").exists():
+        found.append((main_w, f"{slot}.{ext}"))
+    return ", ".join(f"{asset(lang, 'assets/img/' + n)} {w}w" for w, n in sorted(found))
+
+
+def photo(lang, slot, priority=False, mobile=None):
+    """Restituisce la fotografia solo se il file esiste: finché manca, resta
+    visibile il fondale procedurale e il layout non cambia di una riga.
+
+    AVIF e WebP dove il browser li legge, JPEG per tutti gli altri, ciascuno in
+    più larghezze. Con `mobile` i telefoni ricevono un ritaglio a parte, pensato
+    per il loro formato, invece di un taglio aggressivo fatto dal CSS."""
+    jpg = ROOT / "assets" / "img" / f"{slot}.jpg"
+    if not jpg.exists() or not image_size(jpg):
+        return ""
+    w, h = image_size(jpg)
+    sources = []
+    if mobile and (ROOT / "assets" / "img" / f"{mobile}.jpg").exists():
+        mw, mh = image_size(ROOT / "assets" / "img" / f"{mobile}.jpg")
+        for ext, mime in FORMATS + (("jpg", "image/jpeg"),):
+            ss = srcset(lang, mobile, ext, mw)
+            if ss:
+                sources.append(f'<source media="(max-width: 960px)" type="{mime}" srcset="{ss}" '
+                               f'sizes="{SIZES[mobile]}" width="{mw}" height="{mh}">')
+    for ext, mime in FORMATS:
+        ss = srcset(lang, slot, ext, w)
+        if ss:
+            sources.append(f'<source type="{mime}" srcset="{ss}" sizes="{SIZES[slot]}">')
+    attrs = (f'src="{asset(lang, f"assets/img/{slot}.jpg")}" srcset="{srcset(lang, slot, "jpg", w)}" '
+             f'sizes="{SIZES[slot]}" width="{w}" height="{h}" alt="" decoding="async"')
+    attrs += ' fetchpriority="high"' if priority else ' loading="lazy"'
+    return f'<picture>{"".join(sources)}<img {attrs}></picture>'
 
 
 ARROW = ('<svg class="btn__arrow" width="22" height="8" viewBox="0 0 22 8" fill="none" '
@@ -236,8 +275,8 @@ def head(lang, title, desc, path):
 <link rel="apple-touch-icon" href="{asset(lang, "assets/img/apple-touch-icon.png")}">
 <link rel="manifest" href="{asset(lang, "site.webmanifest")}">
 
-<link rel="preload" as="font" type="font/woff2" href="{asset(lang, "assets/fonts/cormorant-garamond-300-latin.woff2")}" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="{asset(lang, "assets/fonts/jost-300-latin.woff2")}" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{asset(lang, "assets/fonts/cormorant-garamond-latin.woff2")}" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{asset(lang, "assets/fonts/jost-latin.woff2")}" crossorigin>
 <link rel="stylesheet" href="{asset(lang, "assets/css/fonts.css")}">
 <link rel="stylesheet" href="{asset(lang, "assets/css/style.css")}">
 <script>
@@ -341,18 +380,24 @@ def focus(lang):
     cards = []
     for i, (key, art) in enumerate(SECTORS):
         pts = "".join(f"<li>{e(p)}</li>" for p in parts(f"focus.{key}.points", lang))
+        # Il titolo della scheda è un h3 che contiene il pulsante, come nelle
+        # fisarmoniche accessibili: chi naviga per titoli trova i tre settori,
+        # e il pulsante si annuncia col solo nome invece che con tutta la scheda.
         cards.append(f'''
     <article class="sector" data-reveal style="--reveal-delay:{i * 120}ms">
-      <button class="sector__toggle" type="button" aria-expanded="false" aria-controls="panel-{key}">
+      <h3 class="sector__heading">
+      <button class="sector__toggle" type="button" aria-expanded="false" aria-controls="panel-{key}"
+              aria-labelledby="name-{key} sub-{key}" aria-describedby="text-{key}">
         <span class="figure sector__media {art}" aria-hidden="true">{photo(lang, "focus-" + key)}</span>
         <span class="sector__body">
-          <span class="sector__name">{e(t(f"focus.{key}.name", lang))}</span>
+          <span class="sector__name" id="name-{key}">{e(t(f"focus.{key}.name", lang))}</span>
           <span class="sector__hr" aria-hidden="true"></span>
-          <span class="sector__sub">{e(t(f"focus.{key}.sublabel", lang))}</span>
-          <span class="sector__text">{e(t(f"focus.{key}.body", lang))}</span>
-          <span class="link-arrow sector__cta">{e(t(f"focus.{key}.cta", lang))}{ARROW}</span>
+          <span class="sector__sub" id="sub-{key}">{e(t(f"focus.{key}.sublabel", lang))}</span>
+          <span class="sector__text" id="text-{key}">{e(t(f"focus.{key}.body", lang))}</span>
+          <span class="link-arrow sector__cta" aria-hidden="true">{e(t(f"focus.{key}.cta", lang))}{ARROW}</span>
         </span>
       </button>
+      </h3>
       <div class="sector__panel" id="panel-{key}" hidden>
         <p class="sector__detail">{e(t(f"focus.{key}.detail", lang))}</p>
         <ul class="sector__points">{pts}</ul>
@@ -385,8 +430,11 @@ def pillars(lang):
       <span class="pillar__hr" aria-hidden="true"></span>
       <p class="pillar__text">{e(t(f"values.{k}.body", lang))}</p>
     </li>''' for i, k in enumerate(PILLARS))
-    return f'''<section class="section section--tint pillars-section" aria-label="{e(t("about.eyebrow", lang))}">
-  <div class="wrap"><ul class="pillars">{items}</ul></div>
+    return f'''<section class="section section--tint pillars-section" aria-labelledby="principles-title">
+  <div class="wrap">
+    <h2 class="visually-hidden" id="principles-title">{e(t("values.heading", lang))}</h2>
+    <ul class="pillars">{items}</ul>
+  </div>
 </section>
 '''
 
@@ -400,7 +448,7 @@ def about(lang):
         </div>''' for i in (1, 2, 3))
     return f'''<section class="section about" id="about">
   <div class="wrap about__grid">
-    <div class="about__media figure art--about" data-reveal="scale" aria-hidden="true">{photo(lang, "about")}</div>
+    <div class="about__media figure art--about" data-reveal="scale" aria-hidden="true">{photo(lang, "about", mobile="about-m")}</div>
     <div class="about__col">
       <p class="eyebrow" data-reveal="fade">{e(t("about.eyebrow", lang))}</p>
       <h2 class="about__title" data-reveal>{e(t("about.title", lang))}</h2>
@@ -436,7 +484,16 @@ def approach(lang):
       <p class="approach__intro muted" data-reveal style="--reveal-delay:140ms">{e(t("approach.intro", lang))}</p>
     </div>
     <ol class="steps">{steps}</ol>
-    <p class="approach__note dim" data-reveal>{e(t("approach.note", lang))}</p>
+    <div class="integrity">
+      <div class="integrity__head">
+        <p class="eyebrow" data-reveal="fade">{e(t("compliance.eyebrow", lang))}</p>
+        <h3 class="integrity__title" data-reveal>{e(t("compliance.title", lang))}</h3>
+      </div>
+      <div class="integrity__body">
+        <p class="prose" data-reveal style="--reveal-delay:120ms">{e(t("compliance.body", lang))}</p>
+        <p class="integrity__note dim" data-reveal style="--reveal-delay:200ms">{e(t("compliance.note", lang))}</p>
+      </div>
+    </div>
   </div>
 </section>
 '''
@@ -476,11 +533,11 @@ def network(lang):
 # --- Invito ---------------------------------------------------------------
 def cta(lang):
     lines = parts("cta.title", lang)
-    return f'''<section class="section cta" aria-label="{e(t("cta.button", lang))}">
+    return f'''<section class="section cta" aria-labelledby="cta-title">
   <div class="wrap">
     <div class="cta__band figure art--texture" data-reveal>{photo(lang, "cta-texture")}
       <div class="cta__inner">
-        <h2 class="cta__title">{"<br>".join(e(l) for l in lines)}</h2>
+        <h2 class="cta__title" id="cta-title">{"<br>".join(e(l) for l in lines)}</h2>
         <p class="cta__body muted">{e(t("cta.body", lang))}</p>
         <a class="btn btn--solid cta__btn" href="#contact">{e(t("cta.button", lang))}{ARROW}</a>
       </div>
@@ -567,10 +624,11 @@ def footer(lang):
       <span>{e(t("company.rea", lang))} {COMPANY["rea"]} — {e(t("company.registry", lang))}</span>
       <span>{e(t("company.pec", lang))} <a href="mailto:{COMPANY["pec"]}">{COMPANY["pec"]}</a></span>
     </p>
+    <p class="footer__statement">{e(t("footer.statement", lang))}</p>
   </div>
   <div class="wrap footer__bar">
     <p class="dim">{e(t("footer.rights", lang))}</p>
-    <a class="footer__top" href="#top">{e(UI["back_home"][lang])}
+    <a class="footer__top" href="#top">{e(UI["to_top"][lang])}
       <svg width="10" height="12" viewBox="0 0 10 12" fill="none" aria-hidden="true">
         <path d="M5 11.5V1M1 4.4 5 .6l4 3.8" stroke="currentColor" stroke-width="1"/></svg>
     </a>
@@ -588,7 +646,7 @@ def jsonld(lang, desc):
     services = [{
         "@type": "Service",
         "name": t(f"focus.{k}.name", lang),
-        "serviceType": t(f"focus.{k}.sublabel", lang),
+        "serviceType": "Business introduction and advisory",
         "description": t(f"focus.{k}.body", lang),
         "provider": {"@id": f"{SITE}/#organization"},
         "areaServed": parts("network.regions", lang),
@@ -654,13 +712,15 @@ def jsonld(lang, desc):
             + "</script>\n")
 
 
+# La descrizione resta sotto i 160 caratteri, oltre i quali Google la tronca;
+# il nome della società è già nel titolo.
 META = {
-    "it": ("KS Capital Partners — Introduttore d'affari indipendente",
-           "Introduttore d'affari indipendente. Presentiamo controparti qualificate nelle "
-           "commodities fisiche, nell'arte e nella pietra naturale, con riservatezza assoluta."),
-    "en": ("KS Capital Partners — Independent Business Introducer",
-           "Independent business introducer. We bring qualified counterparties together in "
-           "physical commodities, fine art and natural stone, in absolute confidence."),
+    "it": ("KS Capital Partners | Introduzioni d'affari internazionali e advisory",
+           "Società indipendente di introduzione d'affari e advisory con sede a Milano: relazioni "
+           "internazionali selezionate in energia, arte e pietra naturale."),
+    "en": ("KS Capital Partners | International Business Introductions & Advisory",
+           "Independent Milan-based business introduction and advisory firm, facilitating "
+           "selected cross-border relationships in energy, fine art and natural stone."),
 }
 
 
@@ -681,7 +741,8 @@ def build_home(lang):
 def build_legal(lang):
     o = LANGS[lang]
     title = f"{UI['legal_title'][lang]} — KS Capital Partners"
-    desc = t("legal.privacy_title", lang) or UI["legal_title"][lang]
+    desc = {"en": "Privacy notice, cookie notice and terms of use of KS Capital Partners S.r.l., Milan.",
+            "it": "Informativa privacy, cookie e condizioni d'uso di KS Capital Partners S.r.l., Milano."}[lang]
     sections = [("privacy", "legal.privacy_title", "legal.privacy_body"),
                 ("cookie", "legal.cookie_title", "legal.cookie_body"),
                 ("terms", "legal.terms_title", "legal.terms_body")]
@@ -778,4 +839,4 @@ out = [
     }, indent=2)),
 ]
 print("\n".join(out))
-print(f"\n  {len(COPY)} stringhe · 2 lingue")
+print(f"\n  {len(COPY)} stringhe · pubblicato in {', '.join(LANGS)}")
